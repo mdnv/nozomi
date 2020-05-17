@@ -1,0 +1,15 @@
+<% if @examination_result.persisted? %>
+  $('.js-examinationResults-modal-list').append("<%= j render('list_item', applicant: @applicant,
+                                                                           result: @examination_result,
+                                                                           from_edit_page: false) %>")
+  $('.js-examinationResults-modal_new').html('')
+<% else %>
+  $('.js-examinationResults-modal_new').html("<%= j render('form', applicant: @applicant,
+                                                                  examination_result: @examination_result,
+                                                                  url: manage_applicant_examination_results_path(@applicant),
+                                                                  method: :post,
+                                                                  is_savable: @examination_result.savable?,
+                                                                  from_edit_page: false) %>")
+<% end %>
+
+$('#js-flash_notifications').html("<%= j render_flash_notifications %>")

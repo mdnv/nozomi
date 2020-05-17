@@ -1,0 +1,91 @@
+.ibox
+  .ibox-title
+    h5 = t('views.actions.advanced_filter')
+    .ibox-tools
+      a.collapse-link
+        i.fa.fa-chevron-up
+      a.close-link
+        i.fa.fa-times
+
+  .ibox-content.clearfix
+    = search_form_for @q, url: manage_applicants_path, remote: true, data: {controller: 'applicants'} do |f|
+      .row
+        .col-md-6
+          .form-group
+            label = JobRecruitment::Applicant.human_attribute_name(:process_type)
+            = f.select :by_process_type,
+                        applicant_statuses_for_select_search,
+                        {include_blank: t('views.forms.include_blank')},
+                        class: 'form-control selectpicker',
+                        'data-live-search' => true
+
+          .form-group
+            label = Occupation.model_name.human
+            = f.select :occupation_id_eq, occupation_for_select_search,
+                                          {include_blank: t('views.forms.include_blank')},
+                                          class: 'form-control date-readonly selectpicker',
+                                          'data-live-search' => true
+
+          .form-group
+            label = Applicant.human_attribute_name :hometown
+            = f.select :hometown_eq, hometowns_for_select,
+                                    {include_blank: t('views.forms.include_blank')},
+                                    class: 'form-control date-readonly selectpicker',
+                                    'data-live-search' => true
+
+          .form-group
+            label = JobRecruitment.human_attribute_name :expected_emigrate_at
+            .row.datepicker.p-n
+              .col-md-6
+                = f.text_field :expected_emigrate_at_beginning_of_day_gteq,
+                               class: 'form-control',
+                               value: l(f.object.expected_emigrate_at_gteq, format: :date_slash, default: nil),
+                               placeholder: t('views.placeholders.from_date'),
+                               autocomplete: 'off'
+              .col-md-6
+                = f.text_field :expected_emigrate_at_end_of_day_lteq,
+                               class: 'form-control',
+                               value: l(f.object.expected_emigrate_at_end_of_day_lteq, format: :date_slash, default: nil),
+                               placeholder: t('views.placeholders.to_date'),
+                               autocomplete: 'off'
+
+        .col-md-6
+          .form-group
+            label = SupervisingOrganization.model_name.human
+            = f.select :supervising_organization_id_eq,
+                        supervising_organizations_for_select,
+                        {include_blank: t('views.forms.include_blank')},
+                        class: 'form-control selectpicker',
+                        data: {target: 'applicants.supervisingOrganization_id',
+                               action: 'change->applicants#supervisingOrganizationChanged',
+                               'live-search' => true}
+
+          .form-group
+            label = Company.model_name.human
+            = f.select :company_id_eq, companies_for_select,
+                                       {include_blank: t('views.forms.include_blank')},
+                                        class: 'form-control selectpicker',
+                                        data: {target: 'applicants.company_id',
+                                               'live-search' => true,
+                                               'hide-disabled' => true}
+
+          .form-group
+            label = Applicant.human_attribute_name :applicant_name
+            = f.text_field :fullname_cont, placeholder: t('views.placeholders.applicant.fullname_contains'),
+                                           class: 'form-control',
+                                           autocomplete: 'off'
+
+          .form-group
+            label = Applicant.human_attribute_name :creator
+            = f.text_field :creator_username_cont, placeholder: t('views.placeholders.staff.username_contains'),
+                                                   class: 'form-control',
+                                                   autocomplete: 'off'
+
+        .col-md-12
+          .btn-group
+            = f.button class: 'btn btn-primary', name: nil
+              i.fa.fa-filter.m-r-sm
+              span = t('views.actions.search')
+
+            = f.submit t('views.actions.remove_filter'), data: {action: 'click->applicants#enableCompaniesSelectOptions'},
+                                                         type: 'reset', class: 'btn btn-default'

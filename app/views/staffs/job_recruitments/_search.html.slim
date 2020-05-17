@@ -1,0 +1,51 @@
+.ibox
+  .ibox-title
+    h5 = t('views.actions.advanced_filter')
+    .ibox-tools
+      a.collapse-link
+        i.fa.fa-chevron-up
+      a.close-link
+        i.fa.fa-times
+
+  .ibox-content
+    = search_form_for @q, url: manage_job_recruitments_path, remote: true do |f|
+      .col-md-6
+        .form-group
+          label = Occupation.model_name.human
+          = f.select :occupation_id_eq, occupation_for_select_search,
+                                        {include_blank: t('views.forms.include_blank')},
+                                        class: 'form-control date-readonly selectpicker',
+                                        'data-live-search' => true
+        .form-group
+          label = Company.model_name.human
+          = f.select :company_id_eq, companies_for_select_seach,
+                                      {include_blank: t('views.forms.include_blank')},
+                                      class: 'form-control selectpicker',
+                                      data: {target: 'applicants.company_id',
+                                               'live-search' => true,
+                                               'hide-disabled' => true}
+        .form-group
+          label = SupervisingOrganization.model_name.human
+          = f.select :supervising_organization_id_eq,
+                      supervising_organizations_for_select,
+                      {include_blank: t('views.forms.include_blank')},
+                      class: 'form-control selectpicker',
+                      data: {target: 'applicants.supervisingOrganization_id',
+                               action: 'change->applicants#supervisingOrganizationChanged',
+                               'live-search' => true}
+      .col-md-6
+        .form-group
+          label = JobRecruitment.human_attribute_name :examination_started_at
+          = f.text_field :examination_started_at, data: {provide: 'datepicker'},
+                               class: 'form-control readonly-date form-control--readonly',
+                               placeholder: t('views.placeholders.start_date')
+        .form-group
+          label = JobRecruitment.human_attribute_name :examination_organized_place
+          = f.text_field :examination_organized_place_cont, placeholder: t('views.placeholders.examination_organized_place'),
+                                        class: 'form-control'
+      .btn-group
+        = f.button class: 'btn btn-primary', name: nil
+          i.fa.fa-filter.m-r-sm
+          span = t('views.actions.search')
+
+        = f.submit t('views.actions.remove_filter'), type: 'reset', class: 'btn btn-default'

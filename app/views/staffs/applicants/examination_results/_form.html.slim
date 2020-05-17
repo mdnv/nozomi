@@ -1,0 +1,28 @@
+= form_for examination_result, url: url, remote: true, method: method do |f|
+  .col-md-12
+    .row
+      .col-md-6
+        .form-group class=('has-error' if f.object.errors.key?(:subject))
+          label.control-label.form-control--required = ExaminationResult.human_attribute_name :subject
+          = f.text_field :subject, class: 'form-control', autocomplete: 'off'
+          = error_messages_of f.object, :subject if f.object.errors.key?(:subject)
+
+      .col-md-6
+        .form-group class=('has-error' if f.object.errors.key?(:mark))
+          label.control-label.form-control--required = ExaminationResult.human_attribute_name :mark
+          = f.number_field :mark, class: 'form-control', autocomplete: 'off', data: {field: 'number'}, min: 0, max: 1_000, step: 0.01
+          = error_messages_of f.object, :mark if f.object.errors.key?(:mark)
+
+      .col-md-12
+        = link_to cancel_manage_applicant_examination_results_path(applicant, id: f.object.id, from_edit_page: from_edit_page),
+                  method: :delete,
+                  class: 'btn btn-default',
+                  title: t('views.actions.cancel'),
+                  remote: true
+          i.fa.fa-times.m-r-sm
+          span = t('views.actions.cancel')
+
+        = f.button class: 'btn btn-primary pull-right'
+          i.fa.fa-check.m-r-sm
+          span = t('views.actions.save')
+    .hr-line-dashed

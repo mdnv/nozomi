@@ -1,0 +1,16 @@
+<% if @studying_result.persisted? %>
+  $('.js-studyingResults-modal-list').append("<%= j render('list_item', applicant: @applicant,
+                                                                           result: @studying_result,
+                                                                           from_edit_page: false) %>")
+  $('.js-studyingResults-modal_new').html('')
+<% else %>
+  $('.js-studyingResults-modal_new').html("<%= j render('form', applicant: @applicant,
+                                                                  studying_result: @studying_result,
+                                                                  url: manage_applicant_studying_results_path(@applicant),
+                                                                  method: :post,
+                                                                  from_edit_page: false) %>")
+
+  $('.js-delayed-datepicker').datepicker({ format: "<%= t('formats.date_picker') %>", autoclose: true, clearBtn: true })
+<% end %>
+
+$('#js-flash_notifications').html("<%= j render_flash_notifications %>")

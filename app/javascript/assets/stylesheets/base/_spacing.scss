@@ -1,0 +1,29 @@
+// scss-lint:disable ImportantRule
+.p {
+  &-n {
+    padding: 0 !important;
+  }
+
+  &-t {
+    &-xs {
+      padding: 5px;
+    }
+  }
+
+  &-r {
+    &-n {
+      padding-right: 0 !important;
+    }
+  }
+
+  &-l {
+    &-n {
+      padding-left: 0 !important;
+    }
+
+    &-xxs {
+      padding-left: 5px;
+    }
+  }
+}
+// scss-lint:enable ImportantRule

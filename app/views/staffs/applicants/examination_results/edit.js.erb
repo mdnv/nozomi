@@ -1,0 +1,6 @@
+$('.js-examinationResults-modal-item[data-id="<%= @examination_result.id %>"]')
+  .html("<%= j render('form', applicant: @applicant,
+                             examination_result: @examination_result,
+                             url: manage_applicant_examination_result_path(@applicant, @examination_result),
+                             from_edit_page: true,
+                             method: :put) %>")

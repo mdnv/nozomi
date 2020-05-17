@@ -1,0 +1,30 @@
+tr
+  td class=('has-error' if member.errors.key?(:fullname))
+    = text_field_tag 'family_composition[fullname][]', member.fullname, class: 'form-control', autocomplete: 'off'
+    = error_messages_of member, :fullname if member.errors.key?(:fullname)
+
+  td class=('has-error' if member.errors.key?(:relationship))
+    = text_field_tag 'family_composition[relationship][]', member.relationship, class: 'form-control', autocomplete: 'off'
+    = error_messages_of member, :relationship if member.errors.key?(:relationship)
+
+  td class=('has-error' if member.errors.key?(:age))
+    = number_field_tag 'family_composition[age][]', member.age, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                max: Settings.person.maximum_age, min: 1, step: 1
+    = error_messages_of member, :age if member.errors.key?(:age)
+
+  - if current_language? :vi
+    td class=('has-error' if member.errors.key?(:phone_number))
+      = text_field_tag 'family_composition[phone_number][]', member.phone_number, class: 'form-control', autocomplete: 'off'
+      = error_messages_of member, :phone_number if member.errors.key?(:phone_number)
+
+  td class=('has-error' if member.errors.key?(:occupation))
+    = text_field_tag 'family_composition[occupation][]', member.occupation, class: 'form-control', autocomplete: 'off'
+    = error_messages_of member, :occupation if member.errors.key?(:occupation)
+
+  td class=('has-error' if member.errors.key?(:income))
+    = text_field_tag 'family_composition[income][]', member.income, class: 'form-control', data: {field: 'number'}, autocomplete: 'off'
+    = error_messages_of member, :income if member.errors.key?(:income)
+
+  td
+    .btn.btn-danger.btn-sm data-action='click->resumes#removeElement' data-confirmation=t('views.confirmations.destroy')
+      i.fa.fa-trash

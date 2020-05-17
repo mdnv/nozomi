@@ -1,0 +1,101 @@
+- if f.object.persisted? && f.object.creator.present?
+  .form-group
+    label.control-label = Applicant.human_attribute_name :creator
+    = text_field_tag :creator, f.object.creator_username, readonly: true, class: 'form-control'
+
+.form-group class=('has-error' if f.object.errors.key?(:firstname))
+  label.control-label.form-control--required = Applicant.human_attribute_name :firstname
+  = f.text_field :firstname, class: 'form-control js-applicant-firstname',
+                             autocomplete: 'off',
+                             data: {target: 'applicants.applicant_firstname',
+                                    action: 'change->applicants#nameChanged'}
+  = error_messages_of f.object, :firstname if f.object.errors.key?(:firstname)
+
+.form-group class=('has-error' if f.object.errors.key?(:lastname))
+  label.control-label.form-control--required = Applicant.human_attribute_name :lastname
+  = f.text_field :lastname, class: 'form-control js-applicant-lastname',
+                            autocomplete: 'off',
+                            data: {target: 'applicants.applicant_lastname',
+                                   action: 'change->applicants#nameChanged'}
+
+  = error_messages_of f.object, :lastname if f.object.errors.key?(:lastname)
+
+.form-group class=('has-error' if f.object.errors.key?(:fullname))
+  label.control-label.form-control--required = Applicant.human_attribute_name :fullname
+  = f.text_field :fullname, class: 'form-control js-applicant-fullname',
+                            autocomplete: 'off',
+                            data: {target: 'applicants.applicant_fullname'}
+  = error_messages_of f.object, :fullname if f.object.errors.key?(:fullname)
+
+.form-group class=('has-error' if f.object.errors.key?(:fullname_katakana))
+  label.control-label = Applicant.human_attribute_name :fullname_katakana
+  = f.text_field :fullname_katakana, class: 'form-control', autocomplete: 'off'
+  = error_messages_of f.object, :fullname_katakana if f.object.errors.key?(:fullname_katakana)
+
+.form-group class=('has-error' if f.object.errors.key?(:fullname_kanji))
+  label.control-label = Applicant.human_attribute_name :fullname_kanji
+  = f.text_field :fullname_kanji, class: 'form-control', autocomplete: 'off'
+  = error_messages_of f.object, :fullname_kanji if f.object.errors.key?(:fullname_kanji)
+
+.form-group class=('has-error' if f.object.errors.key?(:other_name))
+  label.control-label = Applicant.human_attribute_name :other_name
+  = f.text_field :other_name, class: 'form-control', autocomplete: 'off'
+  = error_messages_of f.object, :other_name if f.object.errors.key?(:other_name)
+
+.form-group class=('has-error' if f.object.errors.key?(:gender))
+  label.col-md-3.control-label.form-control--required.p-n.text-left = Applicant.human_attribute_name :gender
+  .col-md-9
+    = f.collection_radio_buttons(:gender, genders_for_radio_group, :first, :second) do |b|
+      = b.label(class: 'p-xxs col-md-6 d-inline-flex') do
+        = b.radio_button(class: 'i-checks')
+        .m-l-xs
+        = b.text
+    = error_messages_of f.object, :gender if f.object.errors.key?(:gender)
+
+.form-group class=('has-error' if f.object.errors.key?(:birthdate))
+  label.control-label.form-control--required = Applicant.human_attribute_name :birthdate
+  .datepicker.p-n
+    = f.text_field :birthdate, class: 'form-control',
+                               autocomplete: 'off',
+                               value: l(f.object.birthdate, format: :date_slash, default: nil)
+  = error_messages_of f.object, :birthdate if f.object.errors.key?(:birthdate)
+
+.form-group class=('has-error' if f.object.errors.key?(:birthplace))
+  label.control-label.form-control--required = Applicant.human_attribute_name :birthplace
+  = f.text_field :birthplace, class: 'form-control', autocomplete: 'off'
+  = error_messages_of f.object, :birthplace if f.object.errors.key?(:birthplace)
+
+.form-group class=('has-error' if f.object.errors.key?(:hometown))
+  label.control-label.form-control--required = Applicant.human_attribute_name :hometown
+  = f.select :hometown, hometowns_for_select,
+                        {include_blank: t('views.forms.include_blank')},
+                        class: 'form-control selectpicker js-applicant-hometown',
+                        autocomplete: 'off',
+                        'data-live-search' => true
+  = error_messages_of f.object, :hometown if f.object.errors.key?(:hometown)
+
+.form-group class=('has-error' if f.object.errors.key?(:vietnam_phone_number))
+  label.control-label.form-control--required = Applicant.human_attribute_name :vietnam_phone_number
+  = f.text_field :vietnam_phone_number, class: 'form-control', autocomplete: 'off'
+  = error_messages_of f.object, :vietnam_phone_number if f.object.errors.key?(:vietnam_phone_number)
+
+.form-group class=('has-error' if f.object.errors.key?(:vietnam_address))
+  label.control-label = Applicant.human_attribute_name :vietnam_address
+  = f.text_field :vietnam_address, class: 'form-control', autocomplete: 'off'
+  = error_messages_of f.object, :vietnam_address if f.object.errors.key?(:vietnam_address)
+
+.form-group class=('has-error' if f.object.errors.key?(:japan_phone_number))
+  label.control-label = Applicant.human_attribute_name :japan_phone_number
+  = f.text_field :japan_phone_number, class: 'form-control', autocomplete: 'off'
+  = error_messages_of f.object, :japan_phone_number if f.object.errors.key?(:japan_phone_number)
+
+.form-group class=('has-error' if f.object.errors.key?(:japan_address))
+  label.control-label = Applicant.human_attribute_name :japan_address
+  = f.text_field :japan_address, class: 'form-control', autocomplete: 'off'
+  = error_messages_of f.object, :japan_address if f.object.errors.key?(:japan_address)
+
+.form-group class=('has-error' if f.object.errors.key?(:personal_note))
+  label.control-label = Applicant.human_attribute_name :personal_note
+  = f.hidden_field :personal_note, id: 'js-applicant-personal_note'
+  trix-editor input='js-applicant-personal_note'
+  = error_messages_of f.object, :personal_note if f.object.errors.key?(:personal_note)

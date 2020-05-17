@@ -1,0 +1,35 @@
+.btn-group.d-inline-flex
+  .btn.btn-primary.btn-sm data-action='click->resumes#addNewFamilyMember'
+    i.fa.fa-plus.m-r-xs
+    = t('views.actions.new')
+
+.table-responsive
+  table.table.table-striped
+    thead
+      tr
+        th = t 'attributes.fullname', locale: current_language
+        th = t 'attributes.relationship', locale: current_language
+        th = t 'attributes.age', locale: current_language
+        - if current_language? :vi
+          th = t 'attributes.phone_number', locale: current_language
+        th = t 'attributes.occupation', locale: current_language
+        th = t 'attributes.income', locale: current_language
+        th
+    tbody.js-familyComposition-list
+      - if f.object.family_composition.data.any?
+        = render partial: 'family_composition_item', collection: f.object.family_composition.data, as: :member
+      - else
+        = render 'family_composition_item', member: Applicant::FamilyMember.new
+
+      tr.js-familyComposition--template.d-none
+        td = text_field_tag 'family_composition[fullname][]', nil, class: 'form-control', autocomplete: 'off'
+        td = text_field_tag 'family_composition[relationship][]', nil, class: 'form-control', autocomplete: 'off'
+        td = number_field_tag 'family_composition[age][]', nil, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                max: Settings.person.maximum_age, min: 1, step: 1
+        - if current_language? :vi
+          td = text_field_tag 'family_composition[phone_number]][]', nil, class: 'form-control', autocomplete: 'off'
+        td = text_field_tag 'family_composition[occupation][]', nil, class: 'form-control', autocomplete: 'off'
+        td = text_field_tag 'family_composition[income][]', nil, class: 'form-control', data: {field: 'number'}, autocomplete: 'off'
+        td
+          .btn.btn-danger.btn-sm data-action='click->resumes#removeElement' data-confirmation=t('views.confirmations.destroy')
+            i.fa.fa-trash

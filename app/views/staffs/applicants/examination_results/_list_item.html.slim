@@ -1,0 +1,33 @@
+.js-examinationResults-modal-item data-id=result.id
+  .col-md-12
+    .row
+      .col-md-5
+        .form-group.m-b-sm
+          label.control-label = ExaminationResult.human_attribute_name :subject
+          = text_field_tag nil, result.subject, class: 'form-control',
+                                                readonly: true,
+                                                id: nil
+      .col-md-5
+        .form-group.m-b-sm
+          label.control-label = ExaminationResult.human_attribute_name :mark
+          = text_field_tag nil, result.mark, class: 'form-control',
+                                              readonly: true,
+                                              id: nil
+      .col-md-2
+        .form-group.m-b-sm
+          label.control-label = t('views.labels.actions')
+          div
+          .btn-group
+            = link_to edit_manage_applicant_examination_result_path(applicant, result),
+                      class: 'btn-white btn btn-sm',
+                      title: t('views.actions.edit'),
+                      remote: true
+              i.fa.fa-cog
+            = link_to manage_applicant_examination_result_path(applicant, result), class: 'btn-white btn btn-sm',
+                                                                                   method: :delete,
+                                                                                   remote: true,
+                                                                                   data: {confirm: t('views.confirmations.destroy')},
+                                                                                   title: t('views.actions.destroy')
+              i.fa.fa-trash
+
+    .hr-line-dashed

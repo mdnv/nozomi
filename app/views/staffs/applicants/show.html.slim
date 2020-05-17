@@ -1,0 +1,201 @@
+- title t('views.titles.applicants.show', name: @applicant.fullname)
+- breadcrumbs applicants: manage_applicants_path,
+              @applicant.fullname => manage_applicant_path(@applicant)
+
+.col-md-12.m-b-xs
+  = link_to manage_applicants_path(filter_params), class: 'btn btn-default m-r-sm m-b-sm'
+    i.fa.fa-long-arrow-alt-left.m-r-xs
+    span = t('views.actions.back_to_list')
+
+  = link_to edit_manage_applicant_path(@applicant, filter_params), class: 'btn-white btn m-r-sm m-b-sm', title: t('views.actions.edit')
+    i.fa.fa-cog.m-r-xs
+    span = t('views.actions.edit')
+
+.col-md-12.m-b-xs
+  .row
+    = render 'redirection_hyperlinks', applicant: @applicant, show_edit_link: true, show_back_to_list_link: true
+
+.clearfix
+  .col-md-7
+    .ibox
+      .ibox-title
+        h5 = t('views.titles.applicants.basic_informations')
+        .ibox-tools
+          a.collapse-link
+            i.fa.fa-chevron-up
+          a.close-link
+            i.fa.fa-times
+
+      .ibox-content
+        .form-group
+          label.control-label = Applicant.human_attribute_name :creator
+          = text_field_tag nil, @applicant.creator_username, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :firstname
+          = text_field_tag nil, @applicant.firstname, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :lastname
+          = text_field_tag nil, @applicant.lastname, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :fullname
+          = text_field_tag nil, @applicant.fullname, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :fullname_katakana
+          = text_field_tag nil, @applicant.fullname_katakana, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :fullname_kanji
+          = text_field_tag nil, @applicant.fullname_kanji, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :other_name
+          = text_field_tag nil, @applicant.other_name, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :gender
+          = text_field_tag nil, Applicant.human_attribute_name("gender.#{@applicant.gender}"), class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :birthdate
+          .datepicker.p-n
+            = text_field_tag nil, l(@applicant.birthdate, format: :date_slash, default: ''), class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :birthplace
+          = text_field_tag nil, @applicant.birthplace, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :hometown
+          = text_field_tag nil, t("regions.#{@applicant.hometown}"), class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :vietnam_phone_number
+          = text_field_tag nil, @applicant.vietnam_phone_number, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :vietnam_address
+          = text_field_tag nil, @applicant.vietnam_address, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :vietnam_phone_number
+          = text_field_tag nil, @applicant.japan_phone_number, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :japan_address
+          = text_field_tag nil, @applicant.japan_address, class: 'form-control', disabled: true, id: nil
+
+        .form-group
+          label.control-label = Applicant.human_attribute_name :personal_note
+          .textarea-border.p-sm.textarea--disabled
+            = sanitize @applicant.personal_note
+
+  .col-md-5
+    .ibox
+      .ibox-title
+        h5 = t('views.titles.applicants.job_recruitment_informations')
+        .ibox-tools
+          a.collapse-link
+            i.fa.fa-chevron-up
+          a.close-link
+            i.fa.fa-times
+
+      .ibox-content
+        - if @applicant.current_application.present?
+          .form-group
+            label.control-label = JobRecruitment.model_name.human
+            = text_field_tag nil, @applicant.send("current_application_occupation_#{I18n.locale}_name"),
+                                  class: 'form-control',
+                                  disabled: true,
+                                  id: nil
+
+          .form-group
+            label.control-label = JobRecruitment::Applicant.human_attribute_name :status
+            = text_field_tag nil, JobRecruitment::Applicant.human_attribute_name("status.#{@applicant.current_application_status}"),
+                                  class: 'form-control',
+                                  disabled: true,
+                                  id: nil
+
+          .form-group
+            label.control-label = SupervisingOrganization.model_name.human
+            = text_field_tag nil, @applicant.send("current_application_supervising_organization_#{I18n.locale}_name"),
+                                  class: 'form-control',
+                                  disabled: true,
+                                  id: nil
+
+          .form-group
+            label.control-label = Company.model_name.human
+            = text_field_tag nil, @applicant.send("current_application_company_#{I18n.locale}_name"),
+                                  class: 'form-control',
+                                  disabled: true,
+                                  id: nil
+
+          .form-group
+            label.control-label = JobRecruitment.human_attribute_name :entering_form_at
+            = text_field_tag nil, l(@applicant.current_application_entering_form_at, format: :date_slash, default: nil),
+                                  class: 'form-control',
+                                  disabled: true
+                                  id: nil,
+
+          .form-group
+            label.control-label = JobRecruitment.human_attribute_name :expected_emigrate_at
+            = text_field_tag nil, l(@applicant.current_application_expected_emigrate_at, format: :date_slash, default: nil),
+                                  class: 'form-control',
+                                  disabled: true,
+                                  id: nil
+
+          .form-group
+            label.control-label = JobRecruitment::Applicant.human_attribute_name :passed_examination_at
+            = text_field_tag nil, l(@applicant.current_application_passed_examination_at, format: :date_slash, default: nil),
+                                  class: 'form-control',
+                                  disabled: true,
+                                  id: nil
+
+          .form-group
+            label.control-label = JobRecruitment::Applicant.human_attribute_name :emigrated_at
+            = text_field_tag nil, l(@applicant.current_application_emigrated_at, format: :date_slash, default: nil),
+                                  class: 'form-control',
+                                  disabled: true,
+                                  id: nil
+
+          .form-group
+            label.control-label = JobRecruitment::Applicant.human_attribute_name :immigrated_at
+            = text_field_tag nil, l(@applicant.current_application_immigrated_at, format: :date_slash, default: nil),
+                                  class: 'form-control',
+                                  disabled: true,
+                                  id: nil
+
+        - else
+          .clearfix.row
+            = render_announcements t('announcements.not_assigned_job_recruitment'), type: 'info'
+
+    - if @applicant.current_application&.examination_results.present?
+      .ibox
+        .ibox-title
+          h5 = ExaminationResult.model_name.human
+          .ibox-tools
+            a.collapse-link
+              i.fa.fa-chevron-up
+            a.close-link
+              i.fa.fa-times
+        .ibox-content.clearfix
+          .col-md-12
+            .row
+              = render partial: 'examination_results', collection: @applicant.current_application.examination_results.available, as: :result
+
+    - if @applicant.current_application&.studying_results.present?
+      .ibox
+        .ibox-title
+          h5 = StudyingResult.model_name.human
+          .ibox-tools
+            a.collapse-link
+              i.fa.fa-chevron-up
+            a.close-link
+              i.fa.fa-times
+        .ibox-content.clearfix
+          .col-md-12
+            .row
+              = render partial: 'studying_results', collection: @applicant.current_application.studying_results.available, as: :result

@@ -1,0 +1,16 @@
+.form-group.m-b-sm
+  label.control-label = StudyingResult.human_attribute_name :subject
+  = text_field_tag nil, result.subject, class: 'form-control',
+                                        readonly: true,
+                                        id: nil
+.form-group.m-b-sm
+  label.control-label = StudyingResult.human_attribute_name :mark
+  = text_field_tag nil, result.mark, class: 'form-control',
+                                      readonly: true,
+                                      id: nil
+.form-group.m-b-sm
+  label.control-label = StudyingResult.human_attribute_name :started_at
+  = text_field_tag nil, l(result.started_at, format: :date_slash, default: nil), class: 'form-control',
+                        readonly: true,
+                        id: nil
+.hr-line-dashed

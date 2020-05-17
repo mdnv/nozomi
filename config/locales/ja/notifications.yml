@@ -1,0 +1,32 @@
+ja:
+  notifications:
+    success: Thành công
+    error: Lỗi
+    alert: Cảnh báo
+    warning: Cảnh báo
+    info: Thông tin
+    errors:
+      unknown: Chưa xác định!
+      not_found: Không tìm thấy dữ liệu!
+      record_invalid: Dữ liệu không hợp lệ!
+      not_authorized_error: Không có quyền truy cập hay thực thi thao tác!
+    delete_staff_successfully: Xóa thành công!
+    create_staff_successfully: Tạo điều hành viên thành công!
+    update_staff_successfully: Cập nhật điều hành viên thành công!
+    create_applicant_successfully: Tạo ứng viên thành công!
+    update_applicant_successfully: Cập nhật ứng viên thành công!
+    destroy_applicant_successfully: Loại bỏ ứng viên thành công!
+    disenroll_job_recruitment_successfully: Huỷ đăng kí gia nhập đơn hàng thành công!
+    create_examination_result_successfully: Thêm kết quả thi mới thành công!
+    update_examination_result_successfully: Cập nhật kết quả thi thành công!
+    delete_examination_result_successfully: Xoá kết quả thi thành công!
+    create_studying_result_successfully: Thêm kết quả đào tạo mới thành công!
+    update_studying_result_successfully: Cập nhật kết quả đào tạo thành công!
+    delete_studying_result_successfully: Xoá kết quả đào tạo thành công!
+    staff_email: Vui lòng nhấp địa chỉ email!
+    update_applicant_resume_successfully: Cập nhật sơ yếu lí lịch thành công!
+    update_applicant_experiences_confirmations_successfully: Cập nhật xác nhận kinh nghiệm thành công!
+
+  announcements:
+    no_record: Không có bản ghi nào!
+    not_assigned_job_recruitment: Chưa được chỉ định đơn hàng!

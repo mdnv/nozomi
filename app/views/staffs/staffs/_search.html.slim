@@ -1,0 +1,29 @@
+.ibox
+  .ibox-title
+    h5 = t('views.actions.advanced_filter')
+    .ibox-tools
+      a.collapse-link
+        i.fa.fa-chevron-up
+      a.close-link
+        i.fa.fa-times
+
+  .ibox-content
+    = search_form_for @q, url: manage_staffs_path, remote: true do |f|
+      .col-md-6
+        .form-group
+          label = Staff.human_attribute_name :department_id
+          = f.select :department_id_eq, staff_name_department_for_select,
+                        {include_blank: t('views.forms.include_blank')},
+                        class: 'form-control selectpicker',
+                        'data-live-search' => true
+      .col-md-6
+        .form-group
+          label = Staff.human_attribute_name :username
+          = f.text_field :username_cont, placeholder: t('views.placeholders.staff.username_contains'),
+                                          class: 'form-control'
+      .btn-group
+        = f.button class: 'btn btn-primary', name: nil
+          i.fa.fa-filter.m-r-sm
+          span = t('views.actions.search')
+
+        = f.submit t('views.actions.remove_filter'), type: 'reset', class: 'btn btn-default'

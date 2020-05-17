@@ -1,0 +1,36 @@
+tr
+  td.col-md-1-0 class=('has-error' if member.errors.key?(:from_year))
+    = number_field_tag 'working_histories[from_year][]', member.from_year, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                           max: Date.current.year, min: Settings.minimum_year, step: 1
+    = error_messages_of member, :from_year if member.errors.key?(:from_year)
+
+  td.col-md-1-0 class=('has-error' if member.errors.key?(:to_year))
+    = number_field_tag 'working_histories[to_year][]', member.to_year, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                       max: Date.current.year, min: Settings.minimum_year, step: 1
+    = error_messages_of member, :to_year if member.errors.key?(:to_year)
+
+  td.col-md-1-0 class=('has-error' if member.errors.key?(:from_month))
+    = number_field_tag 'working_histories[from_month][]', member.from_month, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                             max: 12, min: 1, step: 1
+    = error_messages_of member, :from_month if member.errors.key?(:from_month)
+
+  td.col-md-1-0 class=('has-error' if member.errors.key?(:to_month))
+    = number_field_tag 'working_histories[to_month][]', member.to_month, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                         max: 12, min: 1, step: 1
+    = error_messages_of member, :to_month if member.errors.key?(:to_month)
+
+  td class=('has-error' if member.errors.key?(:company_name))
+    = text_field_tag 'working_histories[company_name][]', member.company_name, class: 'form-control', autocomplete: 'off'
+    = error_messages_of member, :company_name if member.errors.key?(:company_name)
+
+  td class=('has-error' if member.errors.key?(:job_scope))
+    = text_field_tag 'working_histories[job_scope][]', member.job_scope, class: 'form-control', autocomplete: 'off'
+    = error_messages_of member, :job_scope if member.errors.key?(:job_scope)
+
+  td class=('has-error' if member.errors.key?(:income))
+    = text_field_tag 'working_histories[income][]', member.income, class: 'form-control', data: {field: 'number'}, autocomplete: 'off'
+    = error_messages_of member, :income if member.errors.key?(:income)
+
+  td
+    .btn.btn-danger.btn-sm data-action='click->resumes#removeElement'  data-confirmation=t('views.confirmations.destroy')
+      i.fa.fa-trash

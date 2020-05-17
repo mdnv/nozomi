@@ -1,0 +1,40 @@
+.form-group
+  .row
+    .col-md-6
+      label = t('attributes.fullname', locale: current_language)
+      = text_field_tag nil, applicant.fullname, class: 'form-control', disabled: true, id: nil
+
+    .col-md-6
+      label.control-label.p-n.text-left = t('attributes.gender', locale: current_language)
+      div
+        - genders_for_radio_group.each do |gender|
+          label.p-xxs.col-md-2.d-inline-flex.w-auto
+            = radio_button_tag nil, gender.first, applicant.send("#{gender.first}?"), class: 'i-checks', disabled: true
+            .m-l-sm.
+              = gender.second
+
+.form-group
+  .row
+    .col-md-6
+      label = Applicant.human_attribute_name :birthdate, locale: current_language
+      = text_field_tag nil, l(applicant.birthdate, format: :date_slash, default: nil), class: 'form-control', disabled: true, id: nil
+    .col-md-6
+      label = t('attributes.age', locale: current_language)
+      = text_field_tag nil, applicant.age, class: 'form-control', disabled: true, id: nil
+
+.form-group class=('has-error' if f.object.errors.key?(:permanent_place_of_residence))
+  label.p-n.text-left
+    = Applicant::Resume.human_attribute_name :permanent_place_of_residence, locale: current_language
+  = f.text_field :permanent_place_of_residence, class: 'form-control', autocomplete: 'off'
+  = error_messages_of f.object, :permanent_place_of_residence if f.object.errors.key?(:permanent_place_of_residence)
+
+.form-group
+  .row
+    .col-md-6
+      label = Applicant.human_attribute_name :vietnam_phone_number, locale: current_language
+      = text_field_tag nil, applicant.vietnam_phone_number, class: 'form-control', disabled: true, id: nil
+
+    .col-md-6 class=('has-error' if f.object.errors.key?(:family_tel))
+      label = Applicant::Resume.human_attribute_name :family_tel, locale: current_language
+      = f.text_field :family_tel, class: 'form-control', autocomplete: 'off'
+      = error_messages_of f.object, :family_tel if f.object.errors.key?(:family_tel)

@@ -1,0 +1,8 @@
+- title t('views.titles.applicants.resume_informations', name: @applicant.fullname)
+- breadcrumbs applicants: manage_applicants_path,
+              @applicant.fullname => manage_applicant_path(@applicant),
+              resume: edit_manage_applicant_resumes_path(@applicant),
+              "#{current_language}": edit_manage_applicant_resumes_path(@applicant, language: current_language)
+
+.js-applicant_resume-form
+  = render 'form', applicant: @applicant, resume: @resume

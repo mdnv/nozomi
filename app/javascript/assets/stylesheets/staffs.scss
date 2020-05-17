@@ -1,0 +1,10 @@
+// Inspinia template
+@import './themes/inspinia/style';
+
+// Application stylesheets
+@import './abstracts/variables';
+@import './base/base';
+@import './base/spacing';
+@import './base/texts';
+@import './components/forms';
+@import './components/selectpicker';

@@ -1,0 +1,17 @@
+.middle-box.text-center.animated.fadeInDown
+  h1 NOZOMI
+  h3.font-bold Home Page
+
+  div
+    | Developed by
+    b  2nf Ruby on Rails Development Team
+
+  div
+    br/
+    | You can access these pages:
+    br/
+    = link_to staff_signed_in? ? manage_root_path : staff_session_path
+      .btn.btn-primary.m-t.m-r Staff page
+
+    = link_to supervising_organization_signed_in? ? supervise_root_path : new_supervising_organization_session_path
+      .btn.btn-primary.m-t.m-r Supervising Organization page

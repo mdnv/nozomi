@@ -1,0 +1,138 @@
+vi:
+  views:
+    navigation_items:
+      home: Trang chủ
+      dashboard: Trang quản trị
+      staffs: Thành viên
+      new: Thêm mới
+      edit: Sửa thông tin
+      show: Thông tin chi tiết
+      users: Thành viên
+      applicants: Ứng viên
+      new: Thêm mới
+      edit: Sửa thông tin
+      show: Thông tin chi tiết
+      supervising_organizations: Nghiệp đoàn
+      job_recruitments: Đơn hàng
+      companies: Công ty
+      departments: Phòng ban
+      applicants: Ứng viên
+      resume: Sơ yếu lí lịch
+      experiences_confirmations: Xác thực kinh nghiệm
+      vi: Bản tiếng Việt
+      ja: Bản tiếng Nhật
+
+    titles:
+      dashboard:
+        index: Trang quản trị
+      home:
+        index: Trang chủ
+      staffs:
+        sign_in: Đăng nhập trang quản trị
+        list: Danh sách thành viên
+        new: Thêm thành viên
+        edit: 'Sửa thông tin thành viên: %{name}'
+        show: 'Thông tin thành viên: %{name}'
+        forgot_password: Quên mật khẩu
+        new_password: Mật khảu mới
+        confim_password: Nhập lại mất khẩu
+        reset_password: Đặt lại mật khẩu
+      supervising_organizations:
+        list: Danh sách nghiệp đoàn
+        new: Thêm mới nghiệp đoàn
+        show: Thông tin nghiệp đoàn
+        edit: 'Sửa thông tin nghiệp đoàn: %{name}'
+        show: 'Thông tin nghiệp đoàn: %{name}'
+      companies:
+        list: Danh sách công ty
+        new: Thêm công ty
+        show: Thông tin công ty
+        edit: 'Sửa thông tin công ty: %{name}'
+        show: 'Thông tin công ty: %{name}'
+
+      applicants:
+        list: Danh sách ứng viên
+        new: Thêm ứng viên mới
+        detail: Thông tin ứng viên
+        edit: 'Sửa thông tin ứng viên: %{name}'
+        show: 'Thông tin ứng viên: %{name}'
+        basic_informations: Thông tin cơ bản
+        job_recruitment_informations: Thông tin đơn hàng
+        examination_results: 'Kết quả thi của: %{name}'
+        studying_results: 'Kết quả đào tạo của: %{name}'
+        resume_informations: 'Sơ yếu lí lịch: %{name}'
+
+      job_recuritment:
+        list: Danh sách đơn hàng
+        new: Thêm đơn hàng
+        show: Thông tin đơn hàng
+        edit: 'Sửa thông tin đơn hàng: %{name}'
+        show: 'Thông tin đơn hàng: %{name}'
+
+      experiences_confirmations:
+        new: 'Thêm xác thực kinh nghiệm ứng viên: %{name}'
+        edit: 'Sửa xác thực kinh nghiệm ứng viên: %{name}'
+
+    labels:
+      status: Trạng thái
+      actions: Thao tác
+      undefined: (Chưa xác định)
+      experiences_confirmations:
+        intern_informations: 1. Tên thực tập sinh kĩ năng
+        intern_company_informations: 2. Thông tin về công ty trực thuộc của thực tập sinh
+        process_in_intern_time: 3. Quá trình thực hiện thực tập kỹ năng
+        treatment_during_intern: 4. Xử lý trong thời gian thực tập kỹ năng
+        plan_after_intern: 5. Dự định sau khi kết thúc thực tập
+        back_to_applicant: 'Back to %{applicant}'
+
+    actions:
+      sign_in: Đăng nhập
+      sign_out: Đăng xuất
+      new: Thêm mới
+      create: Tạo
+      edit: Sửa thông tin
+      update: Cập nhật
+      destroy: Loại bỏ
+      cancel: Huỷ bỏ
+      close: Đóng
+      save: Lưu
+      filter: Lọc
+      advanced_filter: Lọc nâng cao
+      search: Tìm kiếm
+      remove_filter: Bỏ lọc
+      back_to_list: Về trang danh sách
+      back_to_detail: Về trang thông tin chi tiết
+      send_email: Gửi email
+      change_password: Lưu thay đổi
+      disenroll: Huỷ đăng kí
+      set_failed_examination: Chờ thi lại
+      export_file_8_sheets: Export 8 sheets
+      export_coe: Export COE
+      export_form_visa: Export form VISA
+
+    forms:
+      include_blank: -- Chọn giá trị --
+
+    confirmations:
+      sign_out: Bạn có chắc muốn đăng xuất?
+      destroy: Bạn có chắc chắn muốn loại bỏ bản ghi này?
+      disenroll: Bạn có chắc chắn muốn huỷ đăng kí đơn hàng này?
+      set_failed_examination: Bạn có chắc chắn muốn set trạng thái hồ sơ này về "Chờ thi lại"?
+      change_language: Bạn có chắc chăn muốn thay đổi ngôn ngữ? Hãy cẩn thận những thông tin hiện tại chưa được lưu có thể sẽ mất.
+      back_to_page: Bạn có chắc chắn muốn thoát khỏi trang này? Hãy chắc chắn rằng bạn đã lưu trước khi chuyển trang.
+
+    placeholders:
+      staff:
+        username_contains: Tên tài khoản chứa...
+        email_contains: Email chứa...
+        created_at_from: Tạo từ ngày...
+        created_at_to: Đến ngày...
+      applicant:
+        fullname_contains: Tên đầy đủ có chứa...
+      from_date: Từ ngày...
+      to_date: Đến ngày...
+      supervising_organization:
+        username: Nhập tên....
+        adress: Nhập địa chỉ...
+      examination_organized_place: Địa điển thi...
+      start_date: Ngày thi...

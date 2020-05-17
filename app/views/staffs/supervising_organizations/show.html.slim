@@ -1,0 +1,49 @@
+- title t('views.titles.supervising_organizations.show')
+- breadcrumbs supervising_organizations: manage_supervising_organization_path
+.col-md-12
+  .ibox
+    .ibox-content
+      .form-group
+        label.control-label.required
+          = SupervisingOrganization.human_attribute_name :username
+        = text_field_tag :username, @supervisingorganization.username, class: 'form-control', disabled: true
+
+      .form-group
+        label.control-label.required
+          = SupervisingOrganization.human_attribute_name :email
+        = text_field_tag :email, @supervisingorganization.email, class: 'form-control', disabled: true
+
+      .form-group
+        label.control-label.required = SupervisingOrganization.human_attribute_name :"#{I18n.locale}_name"
+        = text_field_tag :"#{I18n.locale}_name", @supervisingorganization.send("#{I18n.locale}_name"), class: 'form-control', disabled: true
+
+      .form-group
+        label.control-label.required = SupervisingOrganization.human_attribute_name :address
+        = text_field_tag :address, @supervisingorganization.address, class: 'form-control', disabled: true
+
+      .form-group
+        label.control-label.required = SupervisingOrganization.human_attribute_name :tel
+        = text_field_tag :tel, @supervisingorganization.tel, class: 'form-control', disabled: true
+
+      .form-group
+        label.control-label.required = SupervisingOrganization.human_attribute_name :ceo_name
+        = text_field_tag :ceo_name, @supervisingorganization.ceo_name, class: 'form-control', disabled: true
+      .form-group
+        label.control-label.required
+          = SupervisingOrganization.human_attribute_name :created_at
+        = text_field_tag :created_at, l(@supervisingorganization.created_at), class: 'form-control', disabled: true
+
+      .form-group
+        label.control-label.required
+          = SupervisingOrganization.human_attribute_name :updated_at
+        = text_field_tag :updated_at, l(@supervisingorganization.updated_at), class: 'form-control', disabled: true
+
+      = link_to manage_supervising_organizations_path(filter_params), class: 'btn btn-default m-r'
+        i.fa.fa-long-arrow-alt-left.m-r-sm
+        span = t('views.actions.back_to_list')
+
+      - if can(@supervisingorganization).edit?
+        = link_to edit_manage_supervising_organization_path(@supervisingorganization, filter_params), class: 'btn-white btn btn-sm',
+                                                                                                      title: t('views.actions.edit')
+          i.fa.fa-cog.m-r-sm
+          span = t('views.actions.edit')

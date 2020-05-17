@@ -1,0 +1,8 @@
+$('.js-studyingResults-modal-item[data-id="<%= @studying_result.id %>"]')
+  .html("<%= j render('form', applicant: @applicant,
+                             studying_result: @studying_result,
+                             url: manage_applicant_studying_result_path(@applicant, @studying_result),
+                             from_edit_page: true,
+                             method: :put) %>")
+
+$('.js-delayed-datepicker').datepicker({ format: "<%= t('formats.date_picker') %>", autoclose: true, clearBtn: true })

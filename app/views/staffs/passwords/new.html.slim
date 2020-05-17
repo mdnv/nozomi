@@ -1,0 +1,18 @@
+- title t('views.titles.staffs.forgot_password')
+
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  h1.logo-name NOZOMI
+
+  = form_for resource, as: resource_name, url: password_path(resource_name), role: 'form' do |f|
+    .form-group class=('has-error' if f.object.errors.key?(:email))
+      .input-group.m-b
+        span.input-group-addon
+          i.fa.fa-user-secret
+        = f.email_field :email, placeholder: Staff.human_attribute_name(:email),
+                                require: true,
+                                autocomplete: false,
+                                class: 'form-control'
+    button.btn.btn-primary.block.full-width.m-b type='submit'
+      = t('views.actions.send_email')
+  p.m-t
+    small Inspinia we app framework base on Bootstrap 3 &copy; 2014

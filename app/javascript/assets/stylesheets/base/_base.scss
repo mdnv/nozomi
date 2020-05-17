@@ -1,0 +1,53 @@
+// Display
+.d {
+  &-inline-flex {
+    display: inline-flex;
+  }
+
+  &-block {
+    display: block;
+  }
+
+  &-none {
+    display: none;
+  }
+}
+
+.w-auto {
+  width: auto;
+}
+
+.word {
+  &-break {
+    word-break: break-all;
+  }
+}
+
+// Layout
+.col {
+  &-md {
+    &-1-0 {
+      width: 10%;
+    }
+
+    &-1-2-5 {
+      width: 12.5%;
+    }
+
+    &-1-8 {
+      width: 18%;
+    }
+
+    &-1-9 {
+      width: 19%;
+    }
+
+    &-2-0 {
+      width: 20%;
+    }
+
+    &-2-5 {
+      width: 25%;
+    }
+  }
+}

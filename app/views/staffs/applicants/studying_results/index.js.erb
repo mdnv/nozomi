@@ -1,0 +1,6 @@
+$('#js-applicantEdit-modal').html("<%= j render('list', applicant: @applicant,
+                                                        studying_results: @studying_results) %>")
+$('#js-applicantEdit-modal').modal({
+  backdrop: 'static',
+  keyboard: false
+})

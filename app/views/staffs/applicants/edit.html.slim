@@ -1,0 +1,91 @@
+- title t('views.titles.applicants.edit', name: @applicant.fullname_was)
+- breadcrumbs applicants: manage_applicants_path,
+              @applicant.fullname_was => manage_applicant_path(@applicant),
+              edit: edit_manage_applicant_path(@applicant)
+
+= form_with model: [:manage, @applicant], local: true, class: 'form-horizontal', data: {controller: 'applicants'} do |f|
+  .col-md-12.m-b-md
+    = link_to manage_applicants_path(filter_params), class: 'btn btn-default m-r-sm'
+      i.fa.fa-long-arrow-alt-left.m-r-sm
+      span = t('views.actions.back_to_list')
+
+    = link_to manage_applicant_path(@applicant), class: 'btn-white btn m-r-sm', title: @applicant.fullname_was
+      i.fa.fa-id-card-alt.m-r-sm
+      span = t('views.titles.applicants.detail')
+
+    = f.button class: 'btn btn-primary'
+      i.fa.fa-check.m-r-sm
+      span = t('views.actions.save')
+
+  .col-md-7
+    .ibox
+      .ibox-title
+        h5 = t('views.titles.applicants.basic_informations')
+        .ibox-tools
+          a.collapse-link
+            i.fa.fa-chevron-up
+          a.close-link
+            i.fa.fa-times
+
+      .ibox-content.clearfix
+        .col-md-12
+          = render 'form', f: f
+
+  .col-md-5
+    .ibox
+      .ibox-title
+        h5 = t('views.titles.applicants.job_recruitment_informations')
+        .ibox-tools
+          a.collapse-link
+            i.fa.fa-chevron-up
+          a.close-link
+            i.fa.fa-times
+
+      .ibox-content.clearfix
+        .col-md-12
+          = f.fields_for :current_application, @applicant.fetch_or_build_one(:current_application) do |j|
+            = render 'application_form', j: j, applicant: f.object
+          = hidden_field_tag :applicant_id, f.object.id, data: {target: 'applicants.applicant_id'}
+
+    - if f.object.current_application&.persisted?
+      .ibox
+        .ibox-title
+          h5 = ExaminationResult.model_name.human
+          .ibox-tools
+            a.collapse-link
+              i.fa.fa-chevron-up
+            a.close-link
+              i.fa.fa-times
+        .ibox-content.clearfix
+          .col-md-12
+            .form-group
+              = link_to manage_applicant_examination_results_path(f.object), remote: true, class: 'btn btn-default m-r-sm' do
+                i.fa.fa-cog.m-r-xs
+                = t('views.actions.edit')
+
+            .js-examination_results-block
+              = render partial: 'examination_results', collection: f.object.current_application.examination_results.available, as: :result
+
+      .ibox
+        .ibox-title
+          h5 = StudyingResult.model_name.human
+          .ibox-tools
+            a.collapse-link
+              i.fa.fa-chevron-up
+            a.close-link
+              i.fa.fa-times
+        .ibox-content.clearfix
+          .col-md-12
+            .form-group
+              = link_to manage_applicant_studying_results_path(f.object), remote: true, class: 'btn btn-default m-r-sm' do
+                i.fa.fa-cog.m-r-xs
+                = t('views.actions.edit')
+
+            .js-studying_results-block
+              = render partial: 'examination_results', collection: f.object.current_application.studying_results.available, as: :result
+
+.col-md-12.m-b-xs
+  .row
+    = render 'redirection_hyperlinks', applicant: @applicant
+
+#js-applicantEdit-modal.modal.inmodal.fade role='dialog'

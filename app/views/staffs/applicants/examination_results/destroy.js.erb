@@ -1,0 +1,5 @@
+<% unless @examination_result.persisted? %>
+  $('.js-examinationResults-modal-item[data-id="<%= @examination_result.id %>"]').remove()
+<% end %>
+
+$('#js-flash_notifications').html("<%= j render_flash_notifications %>")

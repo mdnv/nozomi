@@ -1,0 +1,102 @@
+.form-group
+  .row
+    .col-md-6
+      .row
+        // Passport
+        .form-group
+          .col-md-12 class=('has-error' if f.object.errors.key?(:passport))
+            label = t('attributes.passport', locale: current_language)
+            div
+              = f.collection_radio_buttons(:passport, options_has_or_has_not_for_checkboxes, :first, :second, checked: f.object.passport) do |b|
+                = b.label(class: 'p-xxs col-md-2 d-inline-flex w-auto m-r-sm',
+                          data: {action: 'click->resumes#passportStatusChanged', value: b.value}) do
+                  = b.radio_button(class: 'i-checks js-resumes-passport_status')
+                  .m-l-xs.js-iCheck_text
+                    = b.text
+              = error_messages_of f.object, :passport if f.object.errors.key?(:passport)
+
+        .col-md-6
+          .row
+            .form-group class=('has-error' if f.object.errors.key?(:passport_number))
+              .col-md-12
+                label.control-label = t('nested_attributes.passport.number', locale: current_language)
+                = f.text_field :passport_number, class: 'form-control',
+                                                  autocomplete: 'off',
+                                                  data: {target: 'resumes.passport_number', value: f.object.passport_number},
+                                                  disabled: !f.object.has_passport?
+                = error_messages_of f.object, :passport_number if f.object.errors.key?(:passport_number)
+
+        .col-md-6
+          .row
+            .form-group class=('has-error' if f.object.errors.key?(:passport_issued_at))
+              .col-md-12
+                .datepicker.p-n
+                  label.control-label = t('nested_attributes.passport.issued_at', locale: current_language)
+                  = f.text_field :passport_issued_at,
+                                  value: l(f.object.passport_issued_at, format: :date_slash, default: nil),
+                                  class: 'form-control js-resumes-passport-issued_at',
+                                  autocomplete: 'off',
+                                  data: {target: 'resumes.passport_issuedAt',
+                                          value: l(f.object.passport_issued_at, format: :date_slash, default: nil)},
+                                  disabled: !f.object.has_passport?
+                = error_messages_of f.object, :passport_issued_at if f.object.errors.key?(:passport_issued_at)
+
+    .col-md-6
+      .row
+        // Gone to Japan
+        .form-group class=('has-error' if f.object.errors.key?(:gone_to_japan))
+          .col-md-12
+            label = Applicant::Resume.human_attribute_name :gone_to_japan, locale: current_language
+            div
+              = f.collection_radio_buttons(:gone_to_japan, options_has_or_has_not_for_checkboxes, :first, :second, checked: f.object.gone_to_japan) do |b|
+                = b.label(class: 'p-xxs col-md-2 d-inline-flex w-auto m-r-sm',
+                          data: {action: 'click->resumes#goneToJapanStatusChanged', value: b.value}) do
+                  = b.radio_button(class: 'i-checks')
+                  .m-l-xs.js-iCheck_text
+                    = b.text
+              = error_messages_of f.object, :gone_to_japan if f.object.errors.key?(:gone_to_japan)
+
+        .form-group class=('has-error' if f.object.errors.key?(:gone_reason))
+          .col-md-12
+            label.text-left = Applicant::Resume.human_attribute_name :gone_reason, locale: current_language
+            = f.text_field :gone_reason, class: 'form-control',
+                                         autocomplete: 'off',
+                                         disabled: !f.object.has_gone_to_japan?,
+                                         data: {target: 'resumes.goneToJapan_reason', value: f.object.gone_reason}
+            = error_messages_of f.object, :gone_reason if f.object.errors.key?(:gone_reason)
+
+.hr-line-dashed
+
+.form-group
+  .row
+    // Relative in Japan
+    .col-md-4 class=('has-error' if f.object.errors.key?(:relative_in_japan))
+      label = Applicant::Resume.human_attribute_name :relative_in_japan, locale: current_language
+      div
+        = f.collection_radio_buttons(:relative_in_japan, options_has_or_has_not_for_checkboxes, :first, :second, checked: f.object.relative_in_japan) do |b|
+          = b.label(class: 'p-xxs col-md-2 d-inline-flex w-auto m-r-sm',
+                   data: {action: 'click->resumes#relativeInJapanStatusChanged', value: b.value}) do
+            = b.radio_button(class: 'i-checks')
+            .m-l-xs.js-iCheck_text
+              = b.text
+        = error_messages_of f.object, :relative_in_japan if f.object.errors.key?(:relative_in_japan)
+
+    .col-md-8
+      .row
+        .col-md-6
+          .form-group class=('has-error' if f.object.errors.key?(:relative_fullname))
+            label.control-la.text-left = Applicant::Resume.human_attribute_name :relative_fullname, locale: current_language
+            = f.text_field :relative_fullname, class: 'form-control',
+                                                autocomplete: 'off',
+                                                disabled: !f.object.has_relative_in_japan?,
+                                                data: {target: 'resumes.relativeInJapan_fullname', value: f.object.relative_fullname}
+            = error_messages_of f.object, :relative_fullname if f.object.errors.key?(:relative_fullname)
+
+        .col-md-6
+          .form-group class=('has-error' if f.object.errors.key?(:relative_relationship))
+            label.control-la.text-left = Applicant::Resume.human_attribute_name :relative_relationship, locale: current_language
+            = f.text_field :relative_relationship, class: 'form-control',
+                                                    autocomplete: 'off',
+                                                    disabled: !f.object.has_relative_in_japan?,
+                                                    data: {target: 'resumes.relativeInJapan_relationship', value: f.object.relative_relationship}
+            = error_messages_of f.object, :relative_relationship if f.object.errors.key?(:relative_relationship)

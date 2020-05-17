@@ -1,0 +1,17 @@
+- title t('views.titles.job_recuritment.list')
+- breadcrumbs job_recruitments: manage_job_recruitments_path
+
+.col-md-12
+  .btn-group.m-b.pull-left
+    = link_to t('views.actions.new'), new_manage_job_recruitment_path, class: 'btn btn-primary'
+
+  = render 'search', q: @q
+
+  .ibox
+    .ibox-title
+      h5 = yield(:title)
+
+    .ibox-content
+
+      #js-job-recruitments-table
+        = render 'job_recruitments_table', q: @q, job_recruitments: @job_recruitments

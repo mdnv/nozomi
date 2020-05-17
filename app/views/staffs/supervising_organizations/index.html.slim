@@ -1,0 +1,17 @@
+- title t('views.titles.supervising_organizations.list')
+- breadcrumbs supervising_organizations: manage_supervising_organizations_path
+
+.col-md-12
+  .btn-group.m-b.pull-left
+    = link_to t('views.actions.new'), new_manage_supervising_organization_path, class: 'btn btn-primary'
+
+  = render 'search', q: @q
+
+  .ibox
+    .ibox-title
+      h5 = yield(:title)
+
+    .ibox-content
+
+      #js-supervising-table
+        = render 'supervising_organizations_table', q: @q, supervisingorganizations: @supervisingorganizations

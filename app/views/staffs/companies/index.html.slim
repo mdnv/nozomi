@@ -1,0 +1,17 @@
+- title t('views.titles.companies.list')
+- breadcrumbs companies: manage_companies_path
+
+.col-md-12
+  .btn-group.m-b.pull-left
+    = link_to t('views.actions.new'), new_manage_company_path, class: 'btn btn-primary'
+
+  = render 'search', q: @q
+
+  .ibox
+    .ibox-title
+      h5 = yield(:title)
+
+    .ibox-content
+
+      #js-companies-table
+        = render 'companies_table', q: @q, companies: @companies

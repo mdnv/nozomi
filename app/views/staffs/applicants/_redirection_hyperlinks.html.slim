@@ -1,0 +1,26 @@
+.col-md-7
+  .form-group.m-b-sm
+    = link_to edit_manage_applicant_resumes_path(applicant, filter_params), class: 'btn btn-white col-md-6', title: t('views.actions.edit')
+      i.fa.fa-id-card.m-r-xs
+      span = Applicant::Resume.model_name.human
+
+    = link_to edit_manage_applicant_experiences_confirmation_path(applicant), class: 'btn btn-white col-md-6'
+      i.fa.fa-check-circle.m-r-xs
+      span = Applicant::ExperiencesConfirmation.model_name.human
+
+    = link_to '#', class: 'btn btn-white col-md-12'
+      i.fa.fa-dollar-sign.m-r-xs
+      span = InternTrainingPayment.model_name.human
+
+.col-md-5.m-b-sm
+  = link_to '#', class: 'btn btn-default col-md-6', title: t('views.actions.export_file_8_sheets') do
+    i.fa.fa-download.m-r-xs
+    = t('views.actions.export_file_8_sheets')
+
+  = link_to '#', class: 'btn btn-default col-md-6', title: t('views.actions.export_coe') do
+    i.fa.fa-download.m-r-xs
+    = t('views.actions.export_coe')
+
+  = link_to '#', class: 'btn btn-default col-md-12', title: t('views.actions.export_form_visa') do
+    i.fa.fa-download.m-r-xs
+    = t('views.actions.export_form_visa')

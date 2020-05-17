@@ -1,0 +1,75 @@
+.form-group
+  .row
+    .col-md-6
+      .row
+        .form-group class=('has-error' if f.object.errors.key?(:blood_type))
+          .col-md-12
+            label = t('attributes.blood_type', locale: current_language)
+            div
+              = f.collection_radio_buttons(:blood_type, blood_types_for_checkboxes, :first, :second, checked: f.object.blood_type) do |b|
+                = b.label(class: 'p-xxs col-md-2 d-inline-flex w-auto') do
+                  = b.radio_button(class: 'i-checks')
+                  .m-l-xs
+                  = b.text
+          .col-md-12
+            = error_messages_of f.object, :blood_type if f.object.errors.key?(:blood_type)
+
+        .form-group
+          .row
+            .col-md-12
+              .col-md-6.p-r-n class=('has-error' if f.object.errors.key?(:forehand))
+                label = t('attributes.forehand', locale: current_language)
+                div
+                  = f.collection_radio_buttons(:forehand, forehands_for_checkboxes, :first, :second) do |b|
+                    = b.label(class: 'p-xxs col-md-2 d-inline-flex w-auto m-r-sm') do
+                      = b.radio_button(class: 'i-checks')
+                      .m-l-xs
+                      = b.text
+              .col-md-6
+                = error_messages_of f.object, :forehand if f.object.errors.key?(:forehand)
+
+              .col-md-6 class=('has-error' if f.object.errors.key?(:tattoo))
+                label = t('attributes.tattoo', locale: current_language)
+                div
+                  = f.collection_radio_buttons(:tattoo, options_has_or_has_not_for_checkboxes, :first, :second) do |b|
+                    = b.label(class: 'p-xxs col-md-2 d-inline-flex w-auto m-r-sm') do
+                      = b.radio_button(class: 'i-checks')
+                      .m-l-xs
+                      = b.text
+              .col-md-6
+                = error_messages_of f.object, :tattoo if f.object.errors.key?(:tattoo)
+
+    .col-md-6
+      .row
+        .form-group class=('has-error' if f.object.errors.key?(:height))
+          .col-md-12
+            label = t('attributes.height', locale: current_language)
+            = f.number_field :height, class: 'form-control', data: {field: 'number'}, min: 100, max: 1_000, step: 1
+            = error_messages_of f.object, :height if f.object.errors.key?(:height)
+
+        .form-group class=('has-error' if f.object.errors.key?(:weight))
+          .col-md-12
+            label = t('attributes.weight', locale: current_language)
+            = f.number_field :weight, class: 'form-control', data: {field: 'number'}, min: 30, max: 1_000, step: 1
+            = error_messages_of f.object, :weight if f.object.errors.key?(:weight)
+
+.form-group
+  .row
+    label.col-md-2.text-left.control-label.m-t-xs = t('attributes.eyesight', locale: current_language)
+    .col-md-10
+      .row
+        .col-md-6
+          .row
+            .form-group class=('has-error' if f.object.errors.key?(:left_eyesight))
+              label.col-md-3.control-label.m-t-xs = t('nested_attributes.eyesights.left', locale: current_language)
+              .col-md-9
+                = f.text_field :left_eyesight, class: 'form-control', autocomplete: 'off', data: {field: 'number'}
+                = error_messages_of f.object, :left_eyesight if f.object.errors.key?(:left_eyesight)
+
+        .col-md-6
+          .row
+            .form-group class=('has-error' if f.object.errors.key?(:right_eyesight))
+              label.col-md-3.control-label.m-t-xs = t('nested_attributes.eyesights.right', locale: current_language)
+              .col-md-9
+                = f.text_field :right_eyesight, class: 'form-control', autocomplete: 'off', data: {field: 'number'}
+                = error_messages_of f.object, :right_eyesight if f.object.errors.key?(:right_eyesight)

@@ -1,0 +1,48 @@
+- if applicants.any?
+  .table-responsive
+    table.table.table-striped
+      thead
+        tr
+          th = sort_link q, :id, Applicant.human_attribute_name(:id), {action: :index}, remote: true
+          th = sort_link q, :current_application_job_recruitment_occupation_id,
+                            JobRecruitment::Applicant.human_attribute_name(:job_recruitment), {action: :index}, remote: true
+          th = sort_link q, :fullname, Applicant.human_attribute_name(:fullname), {action: :index}, remote: true
+          th = sort_link q, :gender, Applicant.human_attribute_name(:gender), {action: :index}, remote: true
+          th = sort_link q, :current_application_status,
+                            JobRecruitment::Applicant.human_attribute_name(:process_type), {action: :index}, remote: true
+          th = sort_link q, :current_application_job_recruitment_supervising_organization_id,
+                            SupervisingOrganization.model_name.human, {action: :index}, remote: true
+          th = sort_link q, :current_application_job_recruitment_company_id,
+                            JobRecruitment.human_attribute_name(:company), {action: :index}, remote: true
+          th = JobRecruitment::Applicant.human_attribute_name(:examination_result)
+          th = sort_link q, :current_application_job_recruitment_entering_form_at,
+                            JobRecruitment.human_attribute_name(:entering_form_at), {action: :index}, remote: true
+          th = t('views.labels.actions')
+      tbody
+        - applicants.each do |applicant|
+          tr
+            td = applicant.id
+            td.word-break = applicant.send("current_application_occupation_#{I18n.locale}_name")
+            td == link_to applicant.fullname, manage_applicant_path(applicant, filter_params), title: applicant.fullname
+            td = Applicant.human_attribute_name("gender.#{applicant.gender}")
+            td = JobRecruitment::Applicant.human_attribute_name "process_type.#{applicant.current_process_type}"
+            td = applicant.send("current_application_supervising_organization_#{I18n.locale}_name")
+            td = applicant.send("current_application_company_#{I18n.locale}_name")
+            td = examination_result_of applicant
+            td = l(applicant.current_application_entering_form_at, format: :date_slash, default: nil)
+            td
+              .btn-group.d-inline-flex
+                = link_to edit_manage_applicant_path(applicant, filter_params), class: 'btn-white btn btn-sm',
+                                                                                title: t('views.actions.edit')
+                  i.fa.fa-cog
+                = link_to manage_applicant_path(applicant, filter_params), class: 'btn-white btn btn-sm',
+                                                                           method: :delete,
+                                                                           data: {confirm: t('views.confirmations.destroy')},
+                                                                           title: t('views.actions.destroy'),
+                                                                           remote: true
+                  i.fa.fa-trash
+  .text-center
+    = paginate applicants, params: {controller: :applicants, action: :index}, remote: true
+- else
+  .row.m-b-n
+    = render_announcements t('announcements.no_record'), type: 'info'

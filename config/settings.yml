@@ -1,0 +1,100 @@
+notification_types:
+  notice:
+    type: success
+    klass: alert-success
+  success:
+    type: success
+    klass: alert-success
+  alert:
+    type: error
+    klass: alert-danger
+  error:
+    type: error
+    klass: alert-danger
+  info:
+    type: info
+    klass: alert-info
+
+sidebar_navigation_items:
+  - name: views.navigation_items.dashboard
+    icon: fa fa-tachometer-alt
+    controller: dashboard
+    path: manage_root_path
+  - name: views.navigation_items.staffs
+    icon: fa fa-user
+    controller: staffs
+    path: manage_staffs_path
+  - name: views.navigation_items.supervising_organizations
+    icon: fa fa-archive
+    controller: supervising_organizations
+    path: manage_supervising_organizations_path
+  - name: views.navigation_items.job_recruitments
+    icon: fa fa-check-square
+    controller: job_recruitments
+    path: manage_job_recruitments_path
+  - name: views.navigation_items.companies
+    icon: fa fa-building
+    controller: companies
+    path: manage_companies_path
+  - name: views.navigation_items.departments
+    icon: fa fa-user-circle
+    controller: departments
+    path: manage_root_path
+  - name: views.navigation_items.applicants
+    icon: fa fa-id-card-alt
+    controller: applicants
+    path: manage_applicants_path
+
+organization_sidebar_navigation_items:
+  - name: views.navigation_items.home
+    icon: fa fa-home
+    controller: home
+    path: supervise_root_path
+  - name: views.navigation_items.staffs
+    icon: fa fa-user
+    controller: staffs
+    path: manage_staffs_path
+  - name: views.navigation_items.supervising_organizations
+    icon: fa fa-archive
+    controller: supervising_organizations
+    path: supervise_job_recruitments_path
+  - name: views.navigation_items.job_recruitments
+    icon: fa fa-check-square
+    controller: job_recruitments
+    path: manage_job_recruitments_path
+  - name: views.navigation_items.companies
+    icon: fa fa-building
+    controller: companies
+    path: manage_companies_path
+  - name: views.navigation_items.departments
+    icon: fa fa-user-circle
+    controller: departments
+    path: supervise_root_path
+  - name: views.navigation_items.applicants
+    icon: fa fa-id-card-alt
+    controller: applicants
+    path: manage_applicants_path
+
+image_params:
+  - avatar
+  - thumbnail
+
+images:
+  default_avatar: http://www.gravatar.com/avatar/?d=identicon&size=%{size}
+  sizes:
+    avatar: 80
+    avatar_medium: 120
+
+regex:
+  phone_number: !ruby/regexp /\A[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*\z/
+  is_number: !ruby/regexp /\A\d+\z/
+
+minimum_year: 1950
+
+person:
+  minimum_age: 1
+  maximum_age: 150
+
+applicant:
+  minimum_age: 15
+  birthdate_minimum: <%= Date.new(1950, 01, 01) %>

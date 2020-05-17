@@ -1,0 +1,40 @@
+- if supervisingorganizations.any?
+  .table-responsive
+    table.table
+      thead
+        tr
+          th = sort_link q, :id, SupervisingOrganization.human_attribute_name(:id), {action: :index}, remote: true
+          th = sort_link q, :"#{I18n.locale}_name", SupervisingOrganization.human_attribute_name("#{I18n.locale}_name"), {action: :index}, remote: true
+          th = sort_link q, :address, SupervisingOrganization.human_attribute_name(:address), {action: :index}, remote: true
+          th = sort_link q, :tel, SupervisingOrganization.human_attribute_name(:tel), {action: :index}, remote: true
+          th = sort_link q, :ceo_name, SupervisingOrganization.human_attribute_name(:ceo_name), {action: :index}, remote: true
+          th = sort_link q, :supervising_organization_id, SupervisingOrganization.human_attribute_name(:supervising_organization_id),
+                                                         {action: :index}, remote: true
+          th = sort_link q, :staff_name, SupervisingOrganization.human_attribute_name(:staff_name), {action: :index}, remote: true
+          th
+      tbody
+        - supervisingorganizations.each do |record|
+            tr
+              td = record.id
+              td == link_to record.send("#{I18n.locale}_name"), manage_supervising_organization_path(record, filter_params),
+                                                                title: record.send("#{I18n.locale}_name")
+              td = record.address
+              td = record.tel
+              td = record.ceo_name
+              td = record.job_recruitments.available.size
+              td = record.amount_of_applicants_working_in_japan
+              td
+                .btn-group
+                    = link_to edit_manage_supervising_organization_path(record, filter_params), class: 'btn-white btn btn-sm',
+                                                                            title: t('views.actions.edit')
+                      i.fa.fa-cog
+                    = link_to manage_supervising_organization_path(record, filter_params), class: 'btn-white btn btn-sm',
+                                                                      method: :delete,
+                                                                      data: {confirm: t('views.confirmations.destroy')},
+                                                                      title: t('views.actions.destroy')
+                      i.fa.fa-trash
+  .text-center
+    = paginate supervisingorganizations, remote: true
+- else
+  .row.m-b-n
+    = render_announcements t('announcements.no_record'), type: 'info'

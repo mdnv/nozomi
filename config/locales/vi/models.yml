@@ -1,0 +1,274 @@
+vi:
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: phải được đồng ý
+      blank: không thể để trắng
+      confirmation: không khớp với xác nhận
+      empty: không thể rỗng
+      equal_to: phải bằng %{count}
+      even: phải là số chẵn
+      exclusion: đã được giành trước
+      greater_than: phải lớn hơn %{count}
+      greater_than_or_equal_to: phải lớn hơn hoặc bằng %{count}
+      inclusion: không có trong danh sách
+      invalid: không hợp lệ
+      less_than: phải nhỏ hơn %{count}
+      less_than_or_equal_to: phải nhỏ hơn hoặc bằng %{count}
+      model_invalid: 'Xác thực thất bại! Lỗi: %{errors}'
+      not_a_number: không phải là số
+      not_an_integer: phải là một số nguyên
+      odd: phải là số lẻ
+      other_than: cần phải khác %{count}
+      present: cần phải để trắng
+      required: không được để trống
+      taken: đã có
+      too_long: quá dài (tối đa %{count} ký tự)
+      too_short: quá ngắn (tối thiểu %{count} ký tự)
+      wrong_length: độ dài không đúng (phải là %{count} ký tự)
+      not_in_date_range: phải nằm trong khoảng từ ngày %{from} đến ngày %{to}
+      greater_than_or_equal_to_date: phải là trong hoặc sau ngày %{date}
+      greater_than_date: phải sau ngày %{date}
+      less_than_or_equal_to_date: phải trước hoặc trong ngày %{date}
+      less_than: phải trước ngày %{date}
+    template:
+      body: 'Có lỗi với các mục sau:'
+      header:
+        one: 1 lỗi ngăn không cho lưu %{model} này
+        other: "%{count} lỗi ngăn không cho lưu %{model} này"
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Có các lỗi sau: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Không thể xóa do tồn tại đối tượng phụ thuộc %{record}
+          has_many: Không thể xóa do tồn tại một số đối tượng phụ thuộc %{record}
+
+    models:
+      supervising_organization: Nghiệp đoàn
+      job_recruitment: Đơn hàng
+      applicant: Ứng viên
+      company: Công ty
+      examination_result: Kết quả thi
+      studying_result: Kết quả đào tạo
+      occupation: Ngành nghề
+      applicant/resume: Sơ yếu lí lịch
+      applicant/experiences_confirmation: Xác nhận kinh nghiệm
+      intern_training_payment: Lệ phí đã thanh toán trong nước
+
+    attributes:
+      supervising_organization:
+        username: Tên tài khoản
+        email: Email
+        encrypted_password: Mật khẩu mã hoá
+        password: Mật khẩu
+        password_confirmation: Xác nhận mật khẩu
+        remember_created_at: Ghi nhớ được lưu lúc
+        reset_password_sent_at: Yêu cầu đặt lại mật khẩu gửi lúc
+        reset_password_token: Mã đặt lại mật khẩu
+        updated_at: Được cập nhật lúc
+        created_at: Được tạo lúc
+        vi_name: Nghiệp đoàn
+        ja_name: Nghiệp đoàn (Tiếng nhật)
+        address: Địa chỉ
+        tel: Số điện thoại
+        ceo_name: Tên CEO
+        supervising_organization_id: Số ĐH đã tuyển
+        staff_name: Số TTS nghiệp đoàn quản lý
+
+      staff:
+        username: Tên
+        email: Email
+        encrypted_password: Mật khẩu mã hoá
+        password: Mật khẩu
+        role: Vai trò
+        status: Trạng thái
+        password_confirmation: Xác nhận mật khẩu
+        remember_created_at: Ghi nhớ được lưu lúc
+        reset_password_sent_at: Yêu cầu đặt lại mật khẩu gửi lúc
+        reset_password_token: Mã đặt lại mật khẩu
+        updated_at: Được cập nhật lúc
+        created_at: Được tạo lúc
+        address: Địa chỉ
+        department: Phòng ban
+        birthdate: Ngày sinh
+        hometown: Quê quán
+        phone: Số điện thoại
+        department_id: Tên phòng ban
+        role: Chức vụ
+
+      staff/role:
+        administrator: Quản trị viên
+        moderator: Kiểm duyệt viên
+
+      staff/status:
+        inactive: Không kích hoạt
+        active: Kích hoạt
+
+      applicant:
+        applicant_name: Tên ứng viên
+        creator: Người tạo
+        firstname: Tên
+        lastname: Họ
+        fullname: Họ và tên
+        fullname_katakana: Họ và tên Katakana
+        fullname_kanji: Họ và tên chữ Hán
+        other_name: Tên khác
+        gender: Giới tính
+        birthdate: Ngày sinh
+        birthplace: Nơi sinh
+        hometown: Quê quán
+        vietnam_phone_number: Số điện thoại cá nhân
+        vietnam_address: Địa chỉ trong nước
+        japan_phone_number: Số điện thoại tại Nhật Bản
+        japan_address: Địa chỉ tại Nhật Bản
+        personal_note: Ghi chú cá nhân
+        availability: Tính khả dụng
+        deleted_at: Xóa bỏ lúc
+
+      applicant/gender:
+        female: Nữ
+        male: Nam
+
+      applicant/resume:
+        permanent_place_of_residence: Nơi đăng ký hộ khẩu thường trú
+        family_tel: Số điện thoại gia đình
+        strong_points: Điểm mạnh
+        hobbies: Sở thích
+        family_composition: Thành phần gia đình
+        learning_histories: Quá trình học tập
+        working_histories: Quá trình làm việc
+        expectation_after_work: Bạn muốn học hỏi những gì khi thực tập tại Nhật Bản
+        goals_after_returned: Mục tiêu sau khi trở về nước
+        long_term_goals: Mục tiêu tương lai của bạn 10 đến 15 năm sau
+        gone_to_japan: Đã từng xin di Nhật Bản
+        gone_reason: Lý do
+        relative_in_japan: Người thân tại Nhật Bản
+        relative_fullname: Họ và tên
+        relative_relationship: Quan hệ
+        left_eyesight: Thị lực mắt trái
+        right_eyesight: Thị lực mắt phải
+        passport_number: Số hộ chiếu
+        passport_issued_at: Ngày cấp
+
+      applicant/experiences_confirmation:
+        company_name: Tên công ty trực thuộc
+        department_name: Tên bộ phận trực thuộc
+        occupation_name: Loại công việc
+        creator_name: Họ tên người được ủy nhiệm lập văn bản
+        creator_position: Chức vụ của người được ủy nhiệm lập văn bản
+        intern_process_nominate_reason: (Lý do tiến cử)
+        intern_process_content: Khác
+        treatment_during_intern_content: Khác
+        plan_working_place: Nơi làm việc
+        plan_working_department: Bộ phận
+        plan_working_occupation: Loại công việc
+        created_at: Ngày tạo
+
+      applicant/experiences_confirmation/intern_process:
+        recommended: Tiến cử từ cơ quan trực thuộc
+        expectation_after_interned: Mong muốn từ thực tập
+        other: Khác
+
+      applicant/experiences_confirmation/treatment_during_interns:
+        keep_relationship: Tiếp tục mối quan hệ với thực tập sinh kỹ năng
+        keep_working: 「Tiếp tục công việc hiện tại」
+        leave_from_work: 「Nghỉ làm」
+        quit: Thôi việc
+        other: Khác
+
+      applicant/experiences_confirmation/plan_after_interns:
+        back: Trở lại làm việc
+        dont_back: Không có dự định trở lại làm việc
+        unidentified_plan: Chưa quyết định
+
+      job_recruitment:
+        supervising_organization_id: Nghiệp đoàn
+        company: Công ty tiếp nhận
+        occupation_id: Ngành nghề
+        training_allowance: Trợ cấp tu nghiệp
+        woking_schedule: Thời gian làm việc
+        overtime_schedule: Thời gian làm thêm
+        breaktime: Nghỉ giải lao
+        working_date: Ngày làm việc
+        amount_woking_applicants: TTS Đang làm tại CT
+        basic_salary: Lương cơ bản
+        net_salary: Lương thực lĩnh
+        overtime_salary_per_hour: Lương ngoài giờ
+        assigning_ended_at: Lịch chốt Form
+        examination_started_at: Lịch thi tuyển
+        examination_way: Hình thức thi tuyển
+        examination_content: Nội dung thi tuyển
+        examination_organized_place: Địa điểm thi tuyển
+        amount_of_participation: Số lượng thi tuyển
+        genders: Giới tính
+        age_range: Độ tuổi
+        height_from: Chiều cao tối thiểu
+        height_to: Chiều cao tối đa
+        weight_from: Câng nặng tối thiểu
+        weight_to: Cân nặng tối đa
+        blood_type: Nhóm máu
+        educational: Trình độ văn hoá
+        forehand: Tay thuận
+        marital_status: Tình trạng hôn nhân
+        smoking: Hút thuốc
+        drink_alcohol: Uống rượu, bia
+        eyesight: Thị lực
+        tattoo: Hình săm
+        experience: Kinh nghiệm
+        expected_emigrate_at: Dự kiến xuất cảnh
+        contract_expires_in: Thời hạn hợp đồng
+        job_scope: Nội dung công việc
+        entering_form_at: Ngày khai form
+        examination_started_at: Ngày phỏng vấn
+
+      job_recruitment/applicant:
+        job_recruitment: Đơn hàng
+        status: Trạng thái
+        expected_immigrate_at: Dự kiến xuất cảnh
+        emigrated_at: Ngày xuất cảnh
+        immigrated_at: Ngày nhập cảnh
+        passed_examination_at: Ngày trúng tuyển
+        process_type: Trạng thái
+        examination_result: Kết quả thi
+
+      job_recruitment/applicant/examination_result:
+        not_yet: Chưa thi
+        passed: Đã đỗ
+
+      job_recruitment/applicant/status:
+        assigned: Đã xác định đơn hàng
+        learning: Học nguồn
+        no_learning: Không học nguồn
+        no_examined: Chưa thi tuyển
+        failed_examination: Chờ thi lại
+        passed_examination: Trúng tuyển
+        enrolmed: Đã nhập học
+        had_coe: Đã có tư cách lưu trú
+        emigrated: Đã xuất cảnh
+        returned: Đã về nước
+
+      job_recruitment/applicant/process_type:
+        before_recruited: Trước tuyển
+        after_recruited: Trúng truyển
+
+      examination_result:
+        subject: Môn
+        mark: Điểm
+
+      studying_result:
+        subject: Môn học
+        mark: Kết quả học
+        started_at: Ngày nhập học
+      occupation:
+        vi_name: Tên đơn hàng
+
+      company:
+        address: Địa chỉ công ty
+        vi_name: Công ty
+        ja_name: Công ty(Tên tiếng nhật)
+        tel: Số điện thoại
+        ceo_name: Tên CEO
+        job_recruitments_id: Số ĐH đã tuyển
+        amount_aplications: Số TTS đang quản lý

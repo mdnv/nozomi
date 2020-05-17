@@ -1,0 +1,10 @@
+.bootstrap-select {
+  > .dropdown-menu {
+    max-width: 100%;
+  }
+
+  .dropdown-menu.inner li {
+    min-width: 100%;
+    width: max-content;
+  }
+}

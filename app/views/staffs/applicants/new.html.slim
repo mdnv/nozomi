@@ -1,0 +1,19 @@
+- title t('views.titles.applicants.new')
+- breadcrumbs applicants: manage_applicants_path,
+              new: new_manage_applicant_path
+
+= form_for @applicant, url: manage_applicants_path, method: :post, class: 'form-horizontal', data: {controller: 'applicants'} do |f|
+  .col-md-12
+    .ibox
+      .ibox-content
+        .col-md-12
+          .row
+            = render 'form', f: f, need_password: true
+
+        = link_to manage_applicants_path(filter_params), class: 'btn btn-default m-r'
+          i.fa.fa-long-arrow-alt-left.m-r-sm
+          span = t('views.actions.back_to_list')
+
+        = f.button class: 'btn btn-primary'
+          i.fa.fa-check.m-r-sm
+          span = t('views.actions.save')

@@ -1,0 +1,72 @@
+= form_for resume, url: manage_applicant_resumes_path(applicant), method: :put, remote: true, class: 'form-horizontal', data: {controller: 'resumes'} do |f|
+  = hidden_field_tag :language, current_language
+
+  .col-md-12.m-b-md
+    = link_to manage_applicants_path(filter_params), class: 'btn btn-default m-r m-b-sm'
+      i.fa.fa-long-arrow-alt-left.m-r-sm
+      span = t('views.actions.back_to_list')
+
+    = link_to manage_applicant_path(applicant), class: 'btn-white btn m-r m-b-sm', title: applicant.fullname
+      i.fa.fa-id-card-alt.m-r-sm
+      span = t('views.titles.applicants.detail')
+
+    = f.button class: 'btn btn-primary m-b-sm'
+      i.fa.fa-check.m-r-sm
+      span = t('views.actions.save')
+
+    span.pull-right.m-b-sm
+      label.control-label.m-r-sm = t('attributes.language', locale: current_language)
+      = link_to edit_manage_applicant_resumes_path(applicant, language: Languagable.other_language(current_language)),
+                class: 'btn btn-white',
+                target: '_blank' do
+        = t("nested_attributes.languages.#{Languagable.other_language(current_language)}", locale: current_language)
+
+  .col-md-12
+    .ibox
+      .ibox-title
+        h5 = t('views.titles.applicants.basic_informations', locale: current_language)
+
+      .ibox-content.clearfix
+        .col-md-12
+          .row
+            = render 'form_basic_informations', f: f, applicant: applicant
+            .hr-line-dashed
+
+            = render 'form_health_informations', f: f
+            .hr-line-dashed
+
+            = render 'form_personal_informations', f: f
+
+  .col-md-12
+    .ibox
+      .ibox-title
+        h5 = Applicant::Resume.human_attribute_name :family_composition, locale: current_language
+
+      .ibox-content.clearfix
+        = render 'form_family_compositions', f: f
+
+  .col-md-12
+    .ibox
+      .ibox-title
+        h5 = Applicant::Resume.human_attribute_name :learning_histories, locale: current_language
+
+      .ibox-content.clearfix
+        = render 'form_learning_histories', f: f
+
+  .col-md-12
+    .ibox
+      .ibox-title
+        h5 = Applicant::Resume.human_attribute_name :working_histories, locale: current_language
+
+      .ibox-content.clearfix
+        = render 'form_working_histories', f: f
+
+  .col-md-12
+    .ibox
+      .ibox-content.clearfix
+        .col-md-12
+          .row
+            = render 'form_future_target', f: f
+            .hr-line-dashed
+
+            = render 'form_extra_informations', f: f

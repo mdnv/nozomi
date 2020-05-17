@@ -1,0 +1,184 @@
+= form_for experiences_confirmation, url: manage_applicant_experiences_confirmation_path(applicant),
+                                     remote: true,
+                                     html: {method: :put, class: 'form-horizontal', data: {controller: 'experiences'}} do |f|
+  // BEGIN: Language
+  .col-lg-12
+    .form-group.m-b-md
+      = link_to manage_applicants_path(filter_params), class: 'btn btn-default m-r m-b-sm'
+        i.fa.fa-long-arrow-alt-left.m-r-sm
+        span = t('views.actions.back_to_list')
+
+      = link_to manage_applicant_path(applicant), class: 'btn-white btn m-r m-b-sm', title: applicant.fullname
+        i.fa.fa-id-card-alt.m-r-sm
+        span = t('views.titles.applicants.detail')
+
+      span.pull-right.m-b-sm
+        label.control-label.m-r-sm = t('attributes.language', locale: current_language)
+        = hidden_field_tag :language, current_language
+        = link_to edit_manage_applicant_experiences_confirmation_path(applicant,
+                  language: Languagable.other_language(current_language)),
+                  class: 'btn btn-white',
+                  target: '_blank' do
+          = t("nested_attributes.languages.#{Languagable.other_language(current_language)}", locale: current_language)
+  // END: Language
+
+  // BEGIN: Intern informations
+  .ibox
+    .ibox-title
+      h4.text-center = t 'views.labels.experiences_confirmations.intern_informations', locale: current_language
+
+    .ibox-content
+      .form-group
+        label.col-lg-2.control-label = t('attributes.romaji', locale: current_language)
+        .col-lg-10 = text_field_tag nil, applicant.fullname, class: 'form-control', disabled: true
+
+      .form-group
+        label.col-lg-2.control-label = t('attributes.kanji', locale: current_language)
+        .col-lg-10 = text_field_tag nil, applicant.fullname_kanji, class: 'form-control', disabled: true
+
+  .ibox
+    .ibox-title
+      h4.text-center = t 'views.labels.experiences_confirmations.intern_company_informations', locale: current_language
+
+    .ibox-content
+      .form-group class=('has-error' if f.object.errors.key?(:company_name))
+        label.col-lg-2.control-label
+          = Applicant::ExperiencesConfirmation.human_attribute_name :company_name, locale: current_language
+        .col-lg-10
+          = f.text_field :company_name, class: 'form-control'
+          = error_messages_of f.object, :company_name if f.object.errors.key?(:company_name)
+
+      .form-group class=('has-error' if f.object.errors.key?(:department_name))
+        label.col-lg-2.control-label
+          = Applicant::ExperiencesConfirmation.human_attribute_name :department_name, locale: current_language
+        .col-lg-10
+          = f.text_field :department_name, class: 'form-control'
+          = error_messages_of f.object, :department_name if f.object.errors.key?(:department_name)
+
+      .form-group class=('has-error' if f.object.errors.key?(:occupation_name))
+        label.col-lg-2.control-label
+          = Applicant::ExperiencesConfirmation.human_attribute_name :occupation_name, locale: current_language
+        .col-lg-10
+          = f.text_field :occupation_name, class: 'form-control'
+          = error_messages_of f.object, :occupation_name if f.object.errors.key?(:occupation_name)
+
+      .form-group class=('has-error' if f.object.errors.key?(:creator_name))
+        label.col-lg-2.control-label
+          = Applicant::ExperiencesConfirmation.human_attribute_name :creator_name, locale: current_language
+        .col-lg-10
+          = f.text_field :creator_name, class: 'form-control'
+          = error_messages_of f.object, :creator_name if f.object.errors.key?(:creator_name)
+
+      .form-group class=('has-error' if f.object.errors.key?(:creator_position))
+        label.col-lg-2.control-label
+          = Applicant::ExperiencesConfirmation.human_attribute_name :creator_position, locale: current_language
+        .col-lg-10
+          = f.text_field :creator_position, class: 'form-control'
+          = error_messages_of f.object, :creator_position if f.object.errors.key?(:creator_position)
+  // END: Intern informations
+
+  // BEGIN: Process in intern time
+  .ibox
+    .ibox-title
+      h4.text-center = t 'views.labels.experiences_confirmations.process_in_intern_time', locale: current_language
+
+    .ibox-content
+      .form-group class=('has-error' if f.object.errors.key?(:intern_process))
+        = f.collection_radio_buttons(:intern_process, intern_processes_for_radio_group, :first, :second) do |b|
+          .col-lg-12.p-n.js-experiences-internProcess-block
+            .col-lg-4.p-n
+              = b.label(class: 'col-lg-12', data: {action: 'click->experiences#internProcessChanged'}) do
+                .form-group
+                  .col-lg-10.m-t-xs = b.text
+                  .col-lg-1.m-t-xs = b.radio_button(class: 'i-checks')
+
+            - if intern_process_content_enterable? b.value
+              .col-lg-8[class=('has-error' if f.object.errors.key?(:intern_process_content))
+                        class=('d-none' unless b.value == f.object.intern_process)]
+                = f.text_field :intern_process_content,
+                                class: 'form-control js-experiences-internProcess_content',
+                                data: {value: (f.object.intern_process_content if b.value == f.object.intern_process), type: b.value}
+                = error_messages_of f.object, :intern_process_content if f.object.errors.key?(:intern_process_content)
+  // END: Process in intern time
+
+  // BEGIN: Treatment during intern
+  .ibox
+    .ibox-title
+      h4.text-center = t 'views.labels.experiences_confirmations.treatment_during_intern', locale: current_language
+
+    .ibox-content
+      .row class=('has-error' if f.object.errors.key?(:treatment_during_intern))
+        = f.collection_radio_buttons(:treatment_during_intern, intern_treatment_during_interns_for_radio_group, :first, :second) do |b|
+          .col-lg-12.p-n
+            .col-lg-4.p-n
+              = b.label(class: 'col-lg-12 js-experiences-treatmentDuringIntern',
+                        data: {action: 'click->experiences#treatmentDuringInternChanged', type: b.value}) do
+                .form-group
+                  .col-lg-10.m-t-xs class=('text-right' if keep_relationship_with_intern_options?(b.value))
+                    = b.text
+
+                  .col-lg-1.m-t-xs
+                    = b.radio_button(class: 'i-checks')
+            - if treatment_during_intern_content_enterable?(b.value)
+              .col-lg-8.js-experiences-treatmentDuringInternContent class=('has-error' if f.object.errors.key?(:treatment_during_intern_content))
+                = f.text_field :treatment_during_intern_content, disabled: !treatment_during_intern_content_enterable?(f.object.treatment_during_intern),
+                                                                  class: 'form-control',
+                                                                  data: {target: 'experiences.treatmentDuringIntern_content',
+                                                                        value: f.object.treatment_during_intern_content}
+                = error_messages_of f.object, :treatment_during_intern_content if f.object.errors.key?(:treatment_during_intern_content)
+  // END: Treatment during intern
+
+  // BEGIN: Plan after intern
+  .ibox
+    .ibox-title
+      h4.text-center = t 'views.labels.experiences_confirmations.plan_after_intern', locale: current_language
+
+    .ibox-content
+      .form-group class=('has-error' if f.object.errors.key?(:plan_after_intern))
+        = f.collection_radio_buttons(:plan_after_intern, plan_after_interns_for_radio_group, :first, :second) do |b|
+            = b.label(class: 'col-lg-12 control-label js-experiences-treatmentDuringIntern',
+                      data: {type: b.value, action: 'click->experiences#planAfterInternChanged'}) do
+              .form-group
+                .col-lg-2 = b.text
+                .col-lg-1 = b.radio_button(class: 'i-checks')
+
+            - if back_after_intern? b.value
+              .col-lg-12
+                .form-group class=('has-error' if f.object.errors.key?(:plan_working_place))
+                  label.col-lg-3.control-label
+                    = Applicant::ExperiencesConfirmation.human_attribute_name :plan_working_place, locale: current_language
+                  .col-lg-9
+                    = f.text_field :plan_working_place, class: 'form-control',
+                                                        data: {target: 'experiences.planWorkingPlace'},
+                                                        disabled: !f.object.back_after_intern?
+                    = error_messages_of f.object, :plan_working_place if f.object.errors.key?(:plan_working_place)
+
+                .form-group class=('has-error' if f.object.errors.key?(:plan_working_department))
+                  label.col-lg-3.control-label
+                    = Applicant::ExperiencesConfirmation.human_attribute_name :plan_working_department, locale: current_language
+                  .col-lg-9
+                    = f.text_field :plan_working_department, class: 'form-control',
+                                                            data: {target: 'experiences.planWorkingDepartment'},
+                                                            disabled: !f.object.back_after_intern?
+                    = error_messages_of f.object, :plan_working_department if f.object.errors.key?(:plan_working_department)
+
+                .form-group class=('has-error' if f.object.errors.key?(:plan_working_occupation))
+                  label.col-lg-3.control-label
+                    = Applicant::ExperiencesConfirmation.human_attribute_name :plan_working_occupation, locale: current_language
+                  .col-lg-9
+                    = f.text_field :plan_working_occupation, class: 'form-control',
+                                                            data: {target: 'experiences.planWorkingOccupation'},
+                                                            disabled: !f.object.back_after_intern?
+                    = error_messages_of f.object, :plan_working_occupation if f.object.errors.key?(:plan_working_occupation)
+
+      .form-group
+        label.col-lg-2.control-label
+          = Applicant::ExperiencesConfirmation.human_attribute_name :created_at, locale: current_language
+        .col-lg-10
+          = text_field_tag nil, l(f.object.created_at || Time.zone.now, format: :date_slash), class: 'form-control', disabled: true
+  // END: Plan after intern
+
+  .text-right.pull-right
+    = f.button class: 'btn btn-primary m-b-md'
+      i.fa.fa-check.m-r-sm
+      = t('views.actions.update')

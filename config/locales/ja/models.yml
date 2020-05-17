@@ -1,0 +1,253 @@
+ja:
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      accepted: を受諾してください
+      blank: を入力してください
+      confirmation: と%{attribute}の入力が一致しません
+      empty: を入力してください
+      equal_to: は%{count}にしてください
+      even: は偶数にしてください
+      exclusion: は予約されています
+      greater_than: は%{count}より大きい値にしてください
+      greater_than_or_equal_to: は%{count}以上の値にしてください
+      inclusion: は一覧にありません
+      invalid: は不正な値です
+      less_than: は%{count}より小さい値にしてください
+      less_than_or_equal_to: は%{count}以下の値にしてください
+      model_invalid: 'バリデーションに失敗しました: %{errors}'
+      not_a_number: は数値で入力してください
+      not_an_integer: は整数で入力してください
+      odd: は奇数にしてください
+      other_than: は%{count}以外の値にしてください
+      present: は入力しないでください
+      required: を入力してください
+      taken: はすでに存在します
+      too_long: は%{count}文字以内で入力してください
+      too_short: は%{count}文字以上で入力してください
+      wrong_length: は%{count}文字で入力してください
+      not_in_date_range: phải nằm trong khoảng từ ngày %{from} đến ngày %{to}
+      greater_than_or_equal_to_date: phải là trong hoặc sau ngày %{date}
+      greater_than_date: phải sau ngày %{date}
+      less_than_or_equal_to_date: phải trước hoặc trong ngày %{date}
+      less_than: phải trước ngày %{date}
+    template:
+      body: 次の項目を確認してください
+      header:
+        one: "%{model}にエラーが発生しました"
+        other: "%{model}に%{count}個のエラーが発生しました"
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+
+    models:
+      supervising_organization: Nghiệp đoàn
+      job_recruitment: Đơn hàng
+      applicant: Ứng viên
+      company: Công ty
+      examination_result: Kết quả thi
+      studying_result: Kết quả đào tạo
+      occupation: Ngành nghề
+      applicant/resume: 履歴書
+      applicant/experiences_confirmation: 外国の所属機関による証明書
+      intern_training_payment: 技能実習の準備に関し本国で支払った費用の明細書
+
+    attributes:
+      supervising_organization:
+        username: Tên tài khoản
+        email: Email
+        encrypted_password: Mật khẩu mã hoá
+        password: Mật khẩu
+        password_confirmation: Xác nhận mật khẩu
+        remember_created_at: Ghi nhớ được lưu lúc
+        reset_password_sent_at: Yêu cầu đặt lại mật khẩu gửi lúc
+        reset_password_token: Mã đặt lại mật khẩu
+        updated_at: Được cập nhật lúc
+        created_at: Được tạo lúc
+
+      staff:
+        username: Tên tài khoản
+        email: Email
+        encrypted_password: Mật khẩu mã hoá
+        password: Mật khẩu
+        role: Vai trò
+        status: Trạng thái
+        password_confirmation: Xác nhận mật khẩu
+        remember_created_at: Ghi nhớ được lưu lúc
+        reset_password_sent_at: Yêu cầu đặt lại mật khẩu gửi lúc
+        reset_password_token: Mã đặt lại mật khẩu
+        updated_at: Được cập nhật lúc
+        created_at: Được tạo lúc
+        address: Địa chỉ
+        department: Phòng ban
+        birthdate: Ngày sinh
+        hometown: Quê quán
+        phone: Số điện thoại
+
+      staff/role:
+        administrator: Quản trị viên
+        moderator: Kiểm duyệt viên
+
+      staff/status:
+        inactive: Không kích hoạt
+        active: Kích hoạt
+
+      applicant:
+        applicant_name: Tên ứng viên
+        creator: Người tạo
+        firstname: Tên
+        lastname: Họ
+        fullname: Họ và Tên
+        fullname_katakana: Tên Katakana đầy đủ
+        fullname_kanji: Tên Hán tự đầy đủ
+        other_name: Tên khác
+        gender: Giới tính
+        birthdate: 先生月日
+        birthplace: Nơi sinh
+        hometown: Quê quán
+        vietnam_phone_number: Số điện thoại cá nhân
+        vietnam_address: Địa chỉ trong nước
+        japan_phone_number: Số điện thoại tại Nhật Bản
+        japan_address: Địa chỉ tại Nhật Bản
+        personal_note: Ghi chú cá nhân
+        availability: Tính khả dụng
+        deleted_at: Xóa bỏ lúc
+
+      applicant/gender:
+        female: Nữ
+        male: Nam
+
+      applicant/resume:
+        permanent_place_of_residence: 連絡先
+        family_tel: Số điện thoại gia đình
+        strong_points: 長所
+        hobbies: 趣味
+        family_composition: 家族氏名
+        learning_histories: 学歴
+        working_histories: 職歴
+        expectation_after_work: 実習を通じて学びたいこと
+        goals_after_returned: 帰国後の目標
+        long_term_goals: 将来の目標
+        gone_to_japan: 過去入国への申請
+        gone_reason: 理由
+        relative_in_japan: 在日親戚
+        relative_fullname: 氏名
+        relative_relationship: 続柄
+        left_eyesight: Thị lực mắt trái
+        right_eyesight: Thị lực mắt phải
+        passport_number: Số hộ chiếu
+        passport_issued_at: Ngày cấp
+
+      applicant/experiences_confirmation:
+        company_name: 所属事業所名
+        department_name: 所属部署名
+        occupation_name: 職種
+        creator_name: 作成責任者の役職
+        creator_position: 作成責任者の氏名
+        intern_process_nominate_reason: (推薦理由）
+        intern_process_content:
+        treatment_during_intern_content:
+        plan_working_place: Nơi làm việc
+        plan_working_department: Bộ phận
+        plan_working_occupation: Loại công việc
+        created_at: 作成
+
+      applicant/experiences_confirmation/intern_process:
+        recommended: 所属機関からの推薦
+        expectation_after_interned: 技能実習生からの希望
+        other: その他
+
+      applicant/experiences_confirmation/treatment_during_interns:
+        keep_relationship: 技能実習生との関係を継続
+        keep_working: 「現職にとどめる」
+        leave_from_work: 「休職とする」
+        quit: 退職
+        other: その他
+
+      applicant/experiences_confirmation/plan_after_interns:
+        back: 復職
+        dont_back: 復職予定なし
+        unidentified_plan: 未定
+
+      job_recruitment:
+        supervising_organization_id: Nghiệp đoàn
+        company: Công ty tiếp nhận
+        occupation_id: Ngành nghề
+        training_allowance: Trợ cấp tu nghiệp
+        woking_schedule: Thời gian làm việc
+        overtime_schedule: Thời gian làm thêm
+        breaktime: Nghỉ giải lao
+        working_date: Ngày làm việc
+        amount_woking_applicants: TTS Đang làm tại CT
+        basic_salary: Lương cơ bản
+        net_salary: Lương thực lĩnh
+        overtime_salary_per_hour: Lương ngoài giờ
+        assigning_ended_at: Lịch chốt Form
+        examination_started_at: Lịch thi tuyển
+        examination_way: Hình thức thi tuyển
+        examination_content: Nội dung thi tuyển
+        examination_organized_place: Địa điểm thi tuyển
+        amount_of_participation: Số lượng thi tuyển
+        genders: Giới tính
+        age_range: Độ tuổi
+        height_from: Chiều cao tối thiểu
+        height_to: Chiều cao tối đa
+        weight_from: Câng nặng tối thiểu
+        weight_to: Cân nặng tối đa
+        blood_type: Nhóm máu
+        educational: Trình độ văn hoá
+        forehand: Tay thuận
+        marital_status: Tình trạng hôn nhân
+        smoking: Hút thuốc
+        drink_alcohol: Uống rượu, bia
+        eyesight: Thị lực
+        tattoo: Hình săm
+        experience: Kinh nghiệm
+        expected_emigrate_at: Dự kiến xuất cảnh
+        contract_expires_in: Thời hạn hợp đồng
+        job_scope: Nội dung công việc
+        entering_form_at: Ngày khai form
+
+      job_recruitment/applicant:
+        job_recruitment: Đơn hàng
+        status: Trạng thái
+        expected_immigrate_at: Dự kiến xuất cảnh
+        emigrated_at: Ngày xuất cảnh
+        immigrated_at: Ngày nhập cảnh
+        passed_examination_at: Ngày trúng tuyển
+        process_type: Trạng thái
+        examination_result: Kết quả thi
+
+      job_recruitment/applicant/examination_result:
+        not_yet: Chưa thi
+        passed: Đã đỗ
+
+      job_recruitment/applicant/status:
+        assigned: Đã xác định đơn hàng
+        learning: Học nguồn
+        no_learning: Không học nguồn
+        no_examined: Chưa thi tuyển
+        failed_examination: Chờ thi lại
+        passed_examination: Trúng tuyển
+        enrolmed: Đã nhập học
+        had_coe: Đã có tư cách lưu trú
+        emigrated: Đã xuất cảnh
+        returned: Đã về nước
+
+      job_recruitment/applicant/process_type:
+        before_recruited: Trước tuyển
+        after_recruited: Trúng truyển
+
+      examination_result:
+        subject: Môn
+        mark: Điểm
+
+      studying_result:
+        subject: Môn học
+        mark: Kết quả học
+        started_at: Ngày nhập học

@@ -1,0 +1,6 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    h2 = yield(:title)
+    ol.breadcrumb
+      - items.each do |name, path|
+        li = link_to navigation_item_name(name), path

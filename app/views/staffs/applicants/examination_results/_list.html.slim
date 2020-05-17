@@ -1,0 +1,25 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      h2.modal-title
+        = t('views.titles.applicants.examination_results', name: @applicant.fullname)
+
+    .modal-body.clearfix
+      .js-examinationResults-modal-list.row
+        = render partial: 'list_item', collection: examination_results,
+                                       as: :result,
+                                       locals: {applicant: @applicant}
+
+      = link_to new_manage_applicant_examination_result_path,
+                class: 'btn btn-default m-r-sm m-b-sm',
+                remote: true do
+        i.fa.fa-plus.m-r-xs
+        = t('views.actions.new')
+
+      .js-examinationResults-modal_new.row
+
+    .modal-footer
+      = link_to close_manage_applicant_examination_results_path(@applicant), class: 'btn btn-white',
+                                                                             method: :delete,
+                                                                             remote: true do
+        = t('views.actions.close')

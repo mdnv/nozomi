@@ -1,0 +1,38 @@
+.btn-group.d-inline-flex
+  .btn.btn-primary.btn-sm data-action='click->resumes#addNewLearningPeriod'
+    i.fa.fa-plus.m-r-xs
+    = t('views.actions.new')
+
+.table-responsive
+  table.table.table-striped
+    thead
+      tr
+        th.text-center.col-md-2-5 colspan='2' = t 'attributes.year', locale: current_language
+        th.text-center.col-md-2-5 colspan='2' = t 'attributes.month', locale: current_language
+        th.text-center.col-md-2-5 = t 'attributes.learning_histories', locale: current_language
+        th.text-center = t 'attributes.major', locale: current_language
+        th.text-center
+    tbody.js-learningHistories-list
+      - if f.object.learning_histories.data.any?
+        = render partial: 'learning_histories_item', collection: f.object.learning_histories.data, as: :member
+      - else
+        = render 'learning_histories_item', member: Applicant::LearningPeriod.new
+
+      tr.js-learningHistories--template.d-none
+        td.col-md-1-2-5 = number_field_tag 'learning_histories[from_year][]', nil, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                      max: Date.current.year, min: Settings.minimum_year, step: 1
+
+        td.col-md-1-2-5 = number_field_tag 'learning_histories[to_year][]', nil, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                    max: Date.current.year, min: Settings.minimum_year, step: 1
+
+        td.col-md-1-2-5 = number_field_tag 'learning_histories[from_month][]', nil, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                  max: 12, min: 1, step: 1
+
+        td.col-md-1-2-5 = number_field_tag 'learning_histories[to_month][]', nil, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                     max: 12, min: 1, step: 1
+
+        td = text_field_tag 'learning_histories[school][]', nil, class: 'form-control', autocomplete: 'off'
+        td = text_field_tag 'learning_histories[major][]', nil, class: 'form-control', autocomplete: 'off'
+        td
+          .btn.btn-danger.btn-sm data-action='click->resumes#removeElement' data-confirmation=t('views.confirmations.destroy')
+            i.fa.fa-trash

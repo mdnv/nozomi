@@ -1,0 +1,153 @@
+vi:
+  application:
+    titles:
+      manage_page: Web Base Manage Layout
+      user_page: Web Base User Layout
+  date:
+    abbr_day_names:
+    - CN
+    - Thứ 2
+    - Thứ 3
+    - Thứ 4
+    - Thứ 5
+    - Thứ 6
+    - Thứ 7
+    abbr_month_names:
+    -
+    - Thg 1
+    - Thg 2
+    - Thg 3
+    - Thg 4
+    - Thg 5
+    - Thg 6
+    - Thg 7
+    - Thg 8
+    - Thg 9
+    - Thg 10
+    - Thg 11
+    - Thg 12
+    day_names:
+    - Chủ nhật
+    - Thứ hai
+    - Thứ ba
+    - Thứ tư
+    - Thứ năm
+    - Thứ sáu
+    - Thứ bảy
+    formats:
+      default: "%d-%m-%Y"
+      long: "%d %B, %Y"
+      short: "%d %b"
+      date_only: '%d/%m/%Y'
+    month_names:
+    -
+    - Tháng một
+    - Tháng hai
+    - Tháng ba
+    - Tháng tư
+    - Tháng năm
+    - Tháng sáu
+    - Tháng bảy
+    - Tháng tám
+    - Tháng chín
+    - Tháng mười
+    - Tháng mười một
+    - Tháng mười hai
+    order:
+    - :day
+    - :month
+    - :year
+  time:
+    am: sáng
+    formats:
+      default: "%H:%M %a, %d-%m-%Y"
+      long: "%d %B, %Y %H:%M"
+      short: "%d %b %H:%M"
+      date_only: "%d-%m-%Y"
+      date_slash: '%d/%m/%Y'
+      date_only: '%d/%m/%Y'
+    pm: chiều
+
+  formats:
+    date_picker: 'dd/mm/yyyy'
+
+  attributes:
+    romaji: Romaji
+    kanji: Kanji
+    fullname: Họ và tên
+    gender: Giới tính
+    age: Tuổi
+    blood_type: Nhóm máu
+    forehand: Tay thuận
+    tattoo: Hình xăm
+    height: Chiều cao (cm)
+    weight: Cân nặng (kg)
+    eyesight: Thị lực
+    marital_status: Tình trạng hôn nhân
+    passport: Hộ chiếu
+    language: Ngôn ngữ
+    phone_number: Số điện thoại
+    # Family relationship
+    relationship: Quan hệ
+    occupation: Nghề nghiệp
+    income: Thu nhập
+    # Learning histories
+    year: Năm
+    from_year: Năm bắt đầu
+    to_year: Năm kết thúc
+    month: Tháng
+    from_month: Tháng bắt đầu
+    to_month: Tháng kết thúc
+    learning_histories: Quá trình học tập
+    school: Quá trình học tập
+    major: Chuyên ngành
+    # Working histories
+    company_name: Tên công ty
+    job_scope: Nội dung công việc
+    income: Thu nhập
+
+  nested_attributes:
+    genders:
+      male: Nam
+      female: Nữ
+    blood_types:
+      o: O
+      a: A
+      ab: AB
+      nil: Chưa xác định
+    forehands:
+      left: Trái
+      right: Phải
+    tattoos:
+      :no: Không
+      :yes: Có
+    eyesights:
+      left: Mắt trái
+      right: Mắt phải
+    marital_statuses:
+      married: Kết hôn
+      single: Chưa kết hôn
+      divorced: Ly dị
+      separated: Ly thân
+    true_false:
+      :no: Không
+      :yes: Có
+      has_not: Không
+      has: Có
+    passport:
+      number: Số hộ chiếu
+      issued_at: Ngày cấp
+    languages:
+      vi: Tiếng Việt
+      ja: Tiếng Nhật
+
+  select:
+    language: "Chọn một ngôn ngữ"
+    company: "Chọn một công ty"
+    department: "Chọn một phòng ban"
+    occupation: "Chọn một nghề nghiệp"
+
+  language:
+    vi: Tiếng Việt
+    ja: Tiếng Nhật
+

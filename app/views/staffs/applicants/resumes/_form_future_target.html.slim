@@ -1,0 +1,20 @@
+// expectation_after_work
+.form-group class=('has-error' if f.object.errors.key?(:expectation_after_work))
+  label.control-label = Applicant::Resume.human_attribute_name :expectation_after_work, locale: current_language
+  = f.hidden_field :expectation_after_work, id: 'js-resume-expectation_after_work'
+  trix-editor input='js-resume-expectation_after_work' class='trix-xs'
+  = error_messages_of f.object, :expectation_after_work if f.object.errors.key?(:expectation_after_work)
+
+// goals_after_returned
+.form-group class=('has-error' if f.object.errors.key?(:goals_after_returned))
+  label.control-label = Applicant::Resume.human_attribute_name :goals_after_returned, locale: current_language
+  = f.hidden_field :goals_after_returned, id: 'js-resume-goals_after_returned'
+  trix-editor input='js-resume-goals_after_returned' class='trix-xs'
+  = error_messages_of f.object, :goals_after_returned if f.object.errors.key?(:goals_after_returned)
+
+// long_term_goals
+.form-group class=('has-error' if f.object.errors.key?(:long_term_goals))
+  label.control-label = Applicant::Resume.human_attribute_name :long_term_goals, locale: current_language
+  = f.hidden_field :long_term_goals, id: 'js-resume-long_term_goals'
+  trix-editor input='js-resume-long_term_goals' class='trix-xs'
+  = error_messages_of f.object, :long_term_goals if f.object.errors.key?(:long_term_goals)

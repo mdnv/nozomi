@@ -1,0 +1,196 @@
+en:
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: must be accepted
+      blank: can't be blank
+      confirmation: doesn't match %{attribute}
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      model_invalid: 'Validation failed: %{errors}'
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      other_than: must be other than %{count}
+      present: must be blank
+      required: must exist
+      taken: has already been taken
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      wrong_length:
+        one: is the wrong length (should be 1 character)
+        other: is the wrong length (should be %{count} characters)
+
+    template:
+      body: 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: "%{count} errors prohibited this %{model} from being saved"
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Validation failed: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Cannot delete record because a dependent %{record} exists
+          has_many: Cannot delete record because dependent %{record} exist
+
+    models:
+      supervising_organization: Supervising Organization
+      job_recruitment: Job Recruitment
+      applicant: Applicant
+      company: Company
+      examination_result: Examination results
+      studying_result: Studying results
+      occupation: Occupation
+
+    attributes:
+      supervising_organization:
+        username: Username
+        email: Email
+        encrypted_password: Encrypted password
+        password: Password
+        password_confirmation: Password confirmation
+        remember_created_at: Remember created at
+        reset_password_sent_at: Reset password sent at
+        reset_password_token: Reset password token
+        updated_at: Updated at
+        created_at: Created at
+
+      staff:
+        username: Username
+        email: Email
+        encrypted_password: Encrypted password
+        password: Password
+        role: Occupiton
+        status: Status
+        password_confirmation: Password confirmation
+        remember_created_at: Remember created at
+        reset_password_sent_at: Reset password sent at
+        reset_password_token: Reset password token
+        updated_at: Updated at
+        created_at: Created at
+        address: Address
+        department: Department
+        birthdate: Birthdate
+        hometown: hometown
+        phone: Phone number
+
+      staff/role:
+        administrator: Administrator
+        moderator: Moderator
+
+      staff/status:
+        inactive: Disactive
+        active: Active
+
+      applicant:
+        applicant_name: Applicant name
+        creator: Người tạo
+        firstname: Tên
+        lastname: Họ
+        fullname: Họ và Tên
+        fullname_katakana: Tên Katakana đầy đủ
+        fullname_kanji: Tên Hán tự đầy đủ
+        other_name: Tên khác
+        gender: Giới tính
+        birthdate: Sinh nhật
+        birthplace: Nơi sinh
+        hometown: Quê quán
+        vietnam_phone_number: Số điện thoại cá nhân
+        vietnam_address: Địa chỉ trong nước
+        japan_phone_number: Số điện thoại tại Nhật Bản
+        japan_address: Địa chỉ tại Nhật Bản
+        personal_note: Ghi chú cá nhân
+        availability: Tính khả dụng
+        deleted_at: Xóa bỏ lúc
+
+      job_recruitment:
+        supervising_organization_id: Nghiệp đoàn
+        company: Công ty tiếp nhận
+        occupation_id: Ngành nghề
+        training_allowance: Trợ cấp tu nghiệp
+        woking_schedule: Thời gian làm việc
+        overtime_schedule: Thời gian làm thêm
+        breaktime: Nghỉ giải lao
+        working_date: Ngày làm việc
+        amount_woking_applicants: TTS Đang làm tại CT
+        basic_salary: Lương cơ bản
+        net_salary: Lương thực lĩnh
+        overtime_salary_per_hour: Lương ngoài giờ
+        assigning_ended_at: Lịch chốt Form
+        examination_started_at: Lịch thi tuyển
+        examination_way: Hình thức thi tuyển
+        examination_content: Nội dung thi tuyển
+        examination_organized_place: Địa điểm thi tuyển
+        amount_of_participation: Số lượng thi tuyển
+        genders: Giới tính
+        age_range: Độ tuổi
+        height_from: Chiều cao tối thiểu
+        height_to: Chiều cao tối đa
+        weight_from: Câng nặng tối thiểu
+        weight_to: Cân nặng tối đa
+        blood_type: Nhóm máu
+        educational: Trình độ văn hoá
+        forehand: Tay thuận
+        marital_status: Tình trạng hôn nhân
+        smoking: Hút thuốc
+        drink_alcohol: Uống rượu, bia
+        eyesight: Thị lực
+        tattoo: Hình săm
+        experience: Kinh nghiệm
+        expected_emigrate_at: Dự kiến xuất cảnh
+        contract_expires_in: Thời hạn hợp đồng
+        job_scope: Nội dung công việc
+        entering_form_at: Ngày khai form
+
+      job_recruitment/applicant:
+        job_recruitment: Đơn hàng
+        status: Trạng thái
+        expected_immigrate_at: Dự kiến xuất cảnh
+        emigrated_at: Ngày xuất cảnh
+        immigrated_at: Ngày nhập cảnh
+        passed_examination_at: Ngày trúng tuyển
+        process_type: Trạng thái
+        examination_result: Examination result
+
+      job_recruitment/applicant/examination_result:
+        not_yet: Chưa thi
+        passed: Đã đỗ
+
+      job_recruitment/applicant/status:
+        assigned: Đã xác định đơn hàng
+        learning: Học nguồn
+        no_learning: Không học nguồn
+        no_examined: Chưa thi tuyển
+        failed_examination: Chờ thi lại
+        passed_examination: Trúng tuyển
+        enrolmed: Đã nhập học
+        had_coe: Đã có tư cách lưu trú
+        emigrated: Đã xuất cảnh
+        returned: Đã về nước
+
+      job_recruitment/applicant/process_type:
+        before_recruited: Trước tuyển
+        after_recruited: Trúng truyển
+
+      examination_result:
+        subject: Môn
+        mark: Điểm
+
+      studying_result:
+        subject: Môn học
+        mark: Kết quả học
+        started_at: Ngày nhập học

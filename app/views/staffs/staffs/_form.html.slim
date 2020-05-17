@@ -1,0 +1,51 @@
+.form-group class=('has-error' if f.object.errors.key?(:username))
+  label.control-label.required = Staff.human_attribute_name :username
+  = f.text_field :username, class: 'form-control'
+  = error_messages_of f.object, :username if f.object.errors.key?(:username)
+
+.form-group class=('has-error' if f.object.errors.key?(:email))
+  label.control-label.required = Staff.human_attribute_name :email
+  = f.text_field :email, class: 'form-control', disabled: action_name == 'edit'
+  = error_messages_of f.object, :email if f.object.errors.key?(:email)
+
+- if need_password
+  .form-group class=('has-error' if f.object.errors.key?(:password))
+    label.control-label.required = Staff.human_attribute_name :password
+    = f.password_field :password, class: 'form-control'
+    = error_messages_of f.object, :password if f.object.errors.key?(:password)
+
+  .form-group class=('has-error' if f.object.errors.key?(:password_confirmation))
+    label.control-label.required = Staff.human_attribute_name :password_confirmation
+    = f.password_field :password_confirmation, class: 'form-control'
+    = error_messages_of f.object, :password_confirmation if f.object.errors.key?(:password_confirmation)
+
+.form-group class=('has-error' if f.object.errors.key?(:address))
+  label.control-label.required = Staff.human_attribute_name :address
+  = f.text_field :address, class: 'form-control'
+  = error_messages_of f.object, :address if f.object.errors.key?(:address)
+
+.form-group class=('has-error' if f.object.errors.key?(:birthdate))
+  label.control-label.required = Staff.human_attribute_name :birthdate
+  = f.text_field :birthdate, class: 'form-control datepicker', data: {provide: 'datepicker'}
+  = error_messages_of f.object, :birthdate if f.object.errors.key?(:birthdate)
+
+.form-group class=('has-error' if f.object.errors.key?(:hometown))
+  label.control-label.required = Staff.human_attribute_name :hometown
+  = f.select :hometown, hometowns_for_select,
+                      {include_blank: t('views.forms.include_blank')},
+                      class: 'form-control selectpicker',
+                      'data-live-search' => true
+  = error_messages_of f.object, :hometown if f.object.errors.key?(:hometown)
+
+.form-group class=('has-error' if f.object.errors.key?(:phone))
+  label.control-label.required = Staff.human_attribute_name :phone
+  = f.text_field :phone, class: 'form-control'
+  = error_messages_of f.object, :phone if f.object.errors.key?(:phone)
+
+.form-group class=('has-error' if f.object.errors.key?(:department_id))
+  label.control-label.required = Staff.human_attribute_name :department_id
+  = f.select :department_id, staff_name_department_for_select,
+                        {include_blank: t('views.forms.include_blank')},
+                        class: 'form-control selectpicker',
+                        'data-live-search' => true
+  = error_messages_of f.object, :name if f.object.errors.key?(:department_id)

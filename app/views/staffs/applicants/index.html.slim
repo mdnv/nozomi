@@ -1,0 +1,23 @@
+- title t('views.titles.applicants.list')
+- breadcrumbs applicants: manage_applicants_path
+
+.col-md-12
+  = render 'search', q: @q
+
+.col-md-12
+  .btn-group.m-b.pull-right
+    = link_to t('views.actions.new'), new_manage_applicant_path, class: 'btn btn-primary'
+
+  .ibox
+    .ibox-title
+      h5 = yield(:title)
+      .ibox-tools
+        a.collapse-link
+          i.fa.fa-chevron-up
+        a.close-link
+          i.fa.fa-times
+
+    .ibox-content
+
+      #js-applicants-table
+        = render 'applicants_table', q: @q, applicants: @applicants

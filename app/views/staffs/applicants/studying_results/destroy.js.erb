@@ -1,0 +1,5 @@
+<% unless @studying_result.persisted? %>
+  $('.js-studyingResults-modal-item[data-id="<%= @studying_result.id %>"]').remove()
+<% end %>
+
+$('#js-flash_notifications').html("<%= j render_flash_notifications %>")

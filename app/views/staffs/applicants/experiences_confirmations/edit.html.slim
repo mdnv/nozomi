@@ -1,0 +1,10 @@
+- title t('views.titles.experiences_confirmations.edit', name: @applicant.fullname)
+- breadcrumbs applicants: manage_applicants_path,
+              @applicant.fullname => manage_applicant_path(@applicant),
+              experiences_confirmations: edit_manage_applicant_experiences_confirmation_path(@applicant),
+              edit: edit_manage_applicant_experiences_confirmation_path(@applicant),
+              "#{current_language}": edit_manage_applicant_experiences_confirmation_path(@applicant, language: current_language)
+
+.col-lg-12
+  .js-experiences_confirmation-form
+    = render 'form', applicant: @applicant, experiences_confirmation: @experiences_confirmation

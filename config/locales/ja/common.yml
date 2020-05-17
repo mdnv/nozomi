@@ -1,0 +1,141 @@
+ja:
+  application:
+    titles:
+      manage_page: Web Base Manage Layout
+      user_page: Web Base User Layout
+  date:
+    abbr_day_names:
+    - 日
+    - 月
+    - 火
+    - 水
+    - 木
+    - 金
+    - 土
+    abbr_month_names:
+    -
+    - 1月
+    - 2月
+    - 3月
+    - 4月
+    - 5月
+    - 6月
+    - 7月
+    - 8月
+    - 9月
+    - 10月
+    - 11月
+    - 12月
+    day_names:
+    - 日曜日
+    - 月曜日
+    - 火曜日
+    - 水曜日
+    - 木曜日
+    - 金曜日
+    - 土曜日
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y年%m月%d日(%a)"
+      short: "%m/%d"
+      date_only: "%Y年%m月%d日"
+    month_names:
+    -
+    - 1月
+    - 2月
+    - 3月
+    - 4月
+    - 5月
+    - 6月
+    - 7月
+    - 8月
+    - 9月
+    - 10月
+    - 11月
+    - 12月
+    order:
+    - :year
+    - :month
+    - :day
+  time:
+    am: 午前
+    formats:
+      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+      long: "%Y/%m/%d %H:%M"
+      short: "%m/%d %H:%M"
+      date_only: "%Y年%m月%d日"
+      date_slash: '%Y/%m/%d'
+    pm: 午後
+
+  formats:
+    date_picker: 'yyyy/mm/dd'
+
+  attributes:
+    romaji: ローマ字
+    kanji: 漢字
+    fullname: 氏名
+    gender: 性別
+    age: 歳
+    blood_type: 血液型
+    forehand: 利き手
+    tattoo: 刺青
+    height: 身長 (cm)
+    weight: 体重 (kg)
+    eyesight: 裸眼視力
+    marital_status: 配偶者
+    passport: パスボート
+    language: 言語
+    phone_number: Số điện thoại
+    # Family relationship
+    relationship: 続柄
+    occupation: 職業
+    income: 収入
+    # Learning histories
+    year: 年
+    from_year: Năm bắt đầu
+    to_year: Năm kết thúc
+    month: 月
+    from_month: Tháng bắt đầu
+    to_month: Tháng kết thúc
+    learning_histories: 学歴
+    school: 学歴
+    major: 専門
+    # Working histories
+    company_name: 会社名
+    job_scope: 仕事内容
+    income: 収入
+
+  nested_attributes:
+    genders:
+      male: 男
+      female: 女
+    blood_types:
+      o: O
+      a: A
+      ab: AB
+      unknown: Chưa xác định
+    forehands:
+      left: 左
+      right: 右
+    tattoos:
+      no: 無
+      yes: 有
+    eyesights:
+      left: 左
+      right: 右
+    marital_statuses:
+      married: 既婚
+      single: 未婚
+      divorced: 離婚
+      separated: 別居
+    true_false:
+      :no: 無
+      :yes: 有
+      has_not: 無
+      has: 有
+    passport:
+      number: Số hộ chiếu
+      issued_at: Ngày cấp
+    languages:
+      vi: ベトナム語
+      ja: 日本語

@@ -1,0 +1,31 @@
+.ibox
+  .ibox-title
+    h5 = t('views.actions.advanced_filter')
+    .ibox-tools
+      a.collapse-link
+        i.fa.fa-chevron-up
+      a.close-link
+        i.fa.fa-times
+
+  .ibox-content
+    = search_form_for @q, url: manage_supervising_organizations_path, remote: true do |f|
+      .col-md-6
+        .form-group
+          label = SupervisingOrganization.human_attribute_name :"#{I18n.locale}_name"
+          = f.text_field :"#{I18n.locale}_name_cont",
+                          placeholder: t('views.placeholders.supervising_organization.username'),
+                          class: 'form-control'
+
+      .col-md-6
+        .form-group
+          label = SupervisingOrganization.human_attribute_name :address
+          = f.text_field :address_cont,
+                          placeholder: t('views.placeholders.supervising_organization.adress'),
+                          class: 'form-control'
+
+      .btn-group
+        = f.button class: 'btn btn-primary', name: nil
+          i.fa.fa-filter.m-r-sm
+          span = t('views.actions.search')
+
+        = f.submit t('views.actions.remove_filter'), type: 'reset', class: 'btn btn-default'

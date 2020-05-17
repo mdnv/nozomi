@@ -1,0 +1,32 @@
+tr
+  td.col-md-1-2-5 class=('has-error' if member.errors.key?(:from_year))
+    = number_field_tag 'learning_histories[from_year][]', member.from_year, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                            max: Date.current.year, min: Settings.minimum_year, step: 1
+    = error_messages_of member, :from_year if member.errors.key?(:from_year)
+
+  td.col-md-1-2-5 class=('has-error' if member.errors.key?(:to_year))
+    = number_field_tag 'learning_histories[to_year][]', member.to_year, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                        max: Date.current.year, min: Settings.minimum_year, step: 1
+    = error_messages_of member, :to_year if member.errors.key?(:to_year)
+
+  td.col-md-1-2-5 class=('has-error' if member.errors.key?(:from_month))
+    = number_field_tag 'learning_histories[from_month][]', member.from_month, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                              max: 12, min: 1, step: 1
+    = error_messages_of member, :from_month if member.errors.key?(:from_month)
+
+  td.col-md-1-2-5 class=('has-error' if member.errors.key?(:to_month))
+    = number_field_tag 'learning_histories[to_month][]', member.to_month, class: 'form-control', data: {field: 'number'}, autocomplete: 'off',
+                                                                          max: 12, min: 1, step: 1
+    = error_messages_of member, :to_month if member.errors.key?(:to_month)
+
+  td class=('has-error' if member.errors.key?(:school))
+    = text_field_tag 'learning_histories[school][]', member.school, class: 'form-control', autocomplete: 'off'
+    = error_messages_of member, :school if member.errors.key?(:school)
+
+  td class=('has-error' if member.errors.key?(:major))
+    = text_field_tag 'learning_histories[major][]', member.major, class: 'form-control', autocomplete: 'off'
+    = error_messages_of member, :major if member.errors.key?(:major)
+
+  td
+    .btn.btn-danger.btn-sm data-action='click->resumes#removeElement' data-confirmation=t('views.confirmations.destroy')
+      i.fa.fa-trash

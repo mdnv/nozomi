@@ -1,0 +1,14 @@
+$('.js-experiences_confirmation-form').html("<%= j render('form', experiences_confirmation: @experiences_confirmation,
+                                                                  applicant: @applicant) %>")
+// Re-render / add events
+$('.i-checks').iCheck({
+  checkboxClass: 'icheckbox_square-green',
+  radioClass: 'iradio_square-green'
+})
+$('.iCheck-helper').on('click', (e) => {
+  const event = document.createEvent("MouseEvents");
+  event.initEvent('click', true, true);
+  e.currentTarget.closest('label').dispatchEvent(event);
+})
+
+$('#js-flash_notifications').html("<%= j render_flash_notifications %>")

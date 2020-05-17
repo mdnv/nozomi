@@ -1,0 +1,5 @@
+$('.js-examinationResults-modal_new').html("<%= j render('form', examination_result: ExaminationResult.new,
+                                                                applicant: @applicant,
+                                                                url: manage_applicant_examination_results_path(@applicant),
+                                                                from_edit_page: false,
+                                                                method: :post) %>")

@@ -1,0 +1,81 @@
+en:
+  views:
+    navigation_items:
+      home: Home
+      dashboard: Dashboard
+      staffs: Staffs
+      new: Add new
+      applicants: Applicants
+      edit: Edit
+      show: Information
+      supervising_organizations: Supervising Organizations
+      job_recruitments: Job Recruitments
+      companies: Company
+      departments: Department
+      applicants: Applicants
+
+    titles:
+      dashboard:
+        index: Dashboard
+      home:
+        index: Trang chủ
+      staffs:
+        sign_in: Staff sign in
+        list: Staffs list
+        new: Add new staff
+        edit: 'Edit staff: %{name}'
+        show: 'Staff information: %{name}'
+        forgot_password: Forgot password
+        new_password: New password
+        confim_password: Re-password
+        reset_password: Reset password
+      applicants:
+        list: Danh sách ứng viên
+        new: Thêm ứng viên mới
+        edit: 'Sửa thông tin ứng viên: %{name}'
+        show: 'Thông tin ứng viên: %{name}'
+        basic_informations: Thông tin cơ bản
+        job_recruitment_informations: Thông tin đơn hàng
+        examination_results: 'Examination Results of %{name}'
+        studying_results: 'Studying Results of: %{name}'
+
+    labels:
+      status: Status
+      actions: Actions
+
+    actions:
+      sign_in: Sign in
+      sign_out: Sign out
+      new: New
+      create: Create
+      edit: Edit
+      update: Update
+      destroy: Destroy
+      save: Save
+      filter: Filter
+      advanced_filter: Advanced filter
+      search: Search
+      remove_filter: Remove filter
+      back_to_list: Back to list
+      send_email: Send email
+      change_password: Change password
+      disenroll: Disenroll
+      set_failed_examination: Waiting for re-examination
+
+    forms:
+      include_blank: -- Choose one --
+
+    confirmations:
+      sign_out: Do you really want to log out?
+      destroy: Do you really want to destroy this record?
+      disenroll: Bạn có chắc chắn muốn huỷ đăng kí đơn hàng này?
+      set_failed_examination: Bạn có chắc chắn muốn set trạng thái hồ sơ này về "Chờ thi lại"?
+
+    placeholders:
+      staff:
+        username_contains: Username contains...
+        email_contains: Email contains...
+        created_at_from: Created from...
+        created_at_to: Created to...
+      from_date: From date...
+      to_date: To date...

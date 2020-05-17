@@ -1,0 +1,18 @@
+- title t('views.titles.supervising_organizations.edit')
+- breadcrumbs supervising_organizations: manage_supervising_organizations_path,
+              edit: edit_manage_supervising_organization_path(@supervisingorganization)
+
+= form_with model: [:manage, @supervisingorganization], local: true, class: 'form-horizontal' do |f|
+  .col-md-12
+    .ibox
+      .ibox-content
+        .col-md-12
+          = render 'form', f: f, need_password: false, is_savable: f.object.savable?
+
+        = link_to manage_supervising_organizations_path(filter_params), class: 'btn btn-default m-r'
+          i.fa.fa-long-arrow-alt-left.m-r-sm
+          span = t('views.actions.back_to_list')
+
+        = f.button class: 'btn btn-primary'
+          i.fa.fa-check.m-r-sm
+          span = t('views.actions.save')

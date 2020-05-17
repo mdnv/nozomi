@@ -1,0 +1,14 @@
+$('.js-applicant_resume-form').html("<%= j render('form', applicant: @applicant, resume: @resume, language: params[:language]) %>")
+// Re-render / add events
+$('.js-resumes-passport-issued_at').datepicker({ format: "<%= t('formats.date_picker') %>", autoclose: true, clearBtn: true })
+$('.i-checks').iCheck({
+  checkboxClass: 'icheckbox_square-green',
+  radioClass: 'iradio_square-green'
+})
+$('.iCheck-helper').on('click', (e) => {
+  const event = document.createEvent("MouseEvents");
+  event.initEvent('click', true, true);
+  e.currentTarget.closest('label').dispatchEvent(event);
+})
+
+$('#js-flash_notifications').html("<%= j render_flash_notifications %>")

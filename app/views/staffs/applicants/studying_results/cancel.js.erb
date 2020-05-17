@@ -1,0 +1,6 @@
+<% if @cancel_from_edit %>
+  $('.js-studyingResults-modal-item[data-id="<%= @studying_result.id %>"]')
+    .html("<%= j render('list_item', applicant: @applicant, result: @studying_result) %>")
+<% else %>
+  $('.js-studyingResults-modal_new').html('')
+<% end %>

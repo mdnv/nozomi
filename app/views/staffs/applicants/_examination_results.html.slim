@@ -1,0 +1,11 @@
+.form-group.m-b-sm
+  label.control-label = ExaminationResult.human_attribute_name :subject
+  = text_field_tag nil, result.subject, class: 'form-control',
+                                        readonly: true,
+                                        id: nil
+.form-group.m-b-sm
+  label.control-label = ExaminationResult.human_attribute_name :mark
+  = text_field_tag nil, result.mark, class: 'form-control',
+                                      readonly: true,
+                                      id: nil
+.hr-line-dashed

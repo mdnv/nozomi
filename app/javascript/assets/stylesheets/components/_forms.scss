@@ -1,0 +1,28 @@
+.textarea {
+  &-border {
+    border: 1px solid $border-color;
+  }
+
+  &--disabled {
+    background-color: $background--disabled;
+  }
+}
+
+.form-control {
+  &--readonly[readonly] {
+    background-color: $color-white;
+  }
+
+  &--required::after {
+    color: $color-red;
+    content: '*';
+  }
+}
+
+select {
+  option {
+    &[disabled] {
+      display: none;
+    }
+  }
+}

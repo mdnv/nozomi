@@ -1,0 +1,23 @@
+.form-group class=('has-error' if f.object.errors.key?(:marital_status))
+  .row
+    label.control-label.text-left.col-md-2 = t('attributes.marital_status', locale: current_language)
+    .col-md-10
+      = f.collection_radio_buttons(:marital_status, marital_statuses_for_checkboxes, :first, :second) do |b|
+        = b.label(class: 'p-xxs col-md-2 d-inline-flex w-auto m-r-sm') do
+          = b.radio_button(class: 'i-checks')
+          .m-l-xs
+          = b.text
+    .col-md-10
+      = error_messages_of f.object, :marital_status if f.object.errors.key?(:marital_status)
+
+.form-group class=('has-error' if f.object.errors.key?(:hobbies))
+  label.control-label = Applicant::Resume.human_attribute_name :hobbies, locale: current_language
+  = f.text_area :hobbies, id: 'js-resume-hobbies', class: 'd-none'
+  trix-editor input='js-resume-hobbies' class='trix-xs'
+  = error_messages_of f.object, :hobbies if f.object.errors.key?(:hobbies)
+
+.form-group class=('has-error' if f.object.errors.key?(:strong_points))
+  label.control-label = Applicant::Resume.human_attribute_name :strong_points, locale: current_language
+  = f.text_area :strong_points, id: 'js-resume-strong_points', class: 'd-none'
+  trix-editor input='js-resume-strong_points' class='trix-xs'
+  = error_messages_of f.object, :strong_points if f.object.errors.key?(:strong_points)

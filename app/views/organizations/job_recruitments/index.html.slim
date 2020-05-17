@@ -1,0 +1,14 @@
+- title t('views.titles.job_recuritment.list')
+- breadcrumbs job_recruitments: supervise_job_recruitments_path
+
+.col-md-12
+  = render 'search', q: @q
+
+  .ibox
+    .ibox-title
+      h5 = yield(:title)
+
+    .ibox-content
+
+      #js-job-recruitments-table
+        = render 'job_recruitments_table', q: @q, job_recruitments: @job_recruitments

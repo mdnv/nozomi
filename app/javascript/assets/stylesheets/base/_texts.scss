@@ -1,0 +1,7 @@
+.text {
+  // scss-lint:disable ImportantRule
+  &-left {
+    text-align: left !important;
+  }
+  // scss-lint:enable ImportantRule
+}

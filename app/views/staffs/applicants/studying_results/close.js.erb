@@ -1,0 +1,4 @@
+$('.js-studying_results-block').html("<%= j render(partial: 'staffs/applicants/studying_results',
+                                                   collection: @studying_results,
+                                                   as: :result) %>")
+$('#js-applicantEdit-modal').modal('toggle')

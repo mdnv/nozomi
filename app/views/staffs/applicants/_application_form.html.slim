@@ -1,0 +1,118 @@
+= hidden_field_tag :job_recruitment_editable, nil, data: {target: 'applicants.jobRecruitment__editable'}
+
+.btn-group.row
+  .btn.btn-default.btn-sm data-action="click->applicants#toggleJobCruitmentEditable"
+    i.fa.fa-cog.m-r-xs
+    = t('views.actions.edit')
+
+  - if can(j.object).disenroll?
+    = link_to manage_applicant_current_application_path(applicant),
+              class: 'btn btn-danger btn-sm',
+              method: :delete,
+              data: {target: 'applicants.jobRecruitment__btnDisenroll',
+                     confirm: t('views.confirmations.disenroll')},
+              title: t('views.actions.disenroll') do
+      i.fa.fa-trash.m-r-xs
+      = t('views.actions.disenroll')
+
+  - if can(j.object).set_failed_examination?
+    = link_to manage_applicant_current_application_path(applicant),
+              class: 'btn btn-danger btn-sm',
+              method: :put,
+              data: {target: 'applicants.jobRecruitment__btnSetFailedExamination',
+                     confirm: t('views.confirmations.set_failed_examination')},
+              title: t('views.actions.disenroll') do
+      i.fa.fa-user-alt-slash.m-r-xs
+      = t('views.actions.set_failed_examination')
+
+.form-group class=('has-error' if j.object.errors.key?(:job_recruitment))
+  label.control-label = JobRecruitment.model_name.human
+  = j.select :job_recruitment_id,
+              job_recruitments_for_applicant_select(j.object.job_recruitment_id),
+              {include_blank: t('views.forms.include_blank')},
+              class: 'form-control selectpicker',
+              data: {target: 'applicants.jobRrecuitment_id',
+                     action: 'change->applicants#jobRecruitmentChanged',
+                     assigned: j.object.job_recruitment_id_was.present?,
+                     'live-search' => true},
+              disabled: true
+  = error_messages_of j.object, :job_recruitment if j.object.errors.key?(:job_recruitment)
+
+.form-group class=('has-error' if j.object.errors.key?(:status))
+    label.control-label = JobRecruitment::Applicant.human_attribute_name :status
+    = j.select :status, applicant_job_recruitment_statuses_for_select,
+                        {include_blank: t('views.forms.include_blank')},
+                        class: 'form-control selectpicker',
+                        data: {target: 'applicants.jobRrecuitment_status',
+                              'live-search' => true},
+                        disabled: true
+    = error_messages_of j.object, :status if j.object.errors.key?(:status)
+
+.form-group
+  label.control-label = SupervisingOrganization.model_name.human
+  = text_field_tag nil, j.object.send("supervising_organization_#{I18n.locale}_name"),
+                        class: 'form-control',
+                        data: {target: 'applicants.jobRrecuitment_organnizationName',
+                               'live-search' => true},
+                        id: nil,
+                        disabled: true
+
+.form-group
+  label.control-label = Company.model_name.human
+  = text_field_tag nil, j.object.send("company_#{I18n.locale}_name"),
+                        class: 'form-control js-job_recuitment-company_name',
+                        data: {target: 'applicants.jobRrecuitment_companyName',
+                               'live-search' => true},
+                        id: nil,
+                        disabled: true
+
+.form-group
+  label.control-label = JobRecruitment.human_attribute_name :entering_form_at
+  = text_field_tag nil, l(j.object.entering_form_at, format: :date_slash, default: nil),
+                        class: 'form-control',
+                        data: {target: 'applicants.jobRrecuitment_enteringFormAt',
+                               'live-search' => true},
+                        id: nil,
+                        disabled: true
+
+.form-group
+  label.control-label = JobRecruitment.human_attribute_name :expected_emigrate_at
+  = text_field_tag nil, l(j.object.expected_emigrate_at, format: :date_slash, default: nil),
+                        class: 'form-control js-job_recuitment-expected_emigrate_at',
+                        data: {target: 'applicants.jobRrecuitment_expectedEmigrateAt',
+                               'live-search' => true},
+                        id: nil,
+                        disabled: true
+
+.form-group class=('has-error' if j.object.errors.key?(:passed_examination_at))
+  label.control-label = JobRecruitment::Applicant.human_attribute_name :passed_examination_at
+  .datepicker.p-n
+    = j.text_field :passed_examination_at, class: 'form-control',
+                                           value: l(j.object.passed_examination_at, format: :date_slash, default: nil),
+                                           data: {target: 'applicants.jobRrecuitment_passedExaminationAt',
+                                                  'live-search' => true},
+                                           autocomplete: 'off',
+                                           disabled: true
+  = error_messages_of j.object, :passed_examination_at if j.object.errors.key?(:passed_examination_at)
+
+.form-group class=('has-error' if j.object.errors.key?(:emigrated_at))
+  label.control-label = JobRecruitment::Applicant.human_attribute_name :emigrated_at
+  .datepicker.p-n
+    = j.text_field :emigrated_at, class: 'form-control',
+                                  value: l(j.object.emigrated_at, format: :date_slash, default: nil),
+                                  data: {target: 'applicants.jobRrecuitment_emigratedAt',
+                                         'live-search' => true},
+                                  autocomplete: 'off',
+                                  disabled: true
+  = error_messages_of j.object, :emigrated_at if j.object.errors.key?(:emigrated_at)
+
+.form-group class=('has-error' if j.object.errors.key?(:immigrated_at))
+  label.control-label = JobRecruitment::Applicant.human_attribute_name :immigrated_at
+  .datepicker.p-n
+    = j.text_field :immigrated_at, class: 'form-control',
+                                   value: l(j.object.immigrated_at, format: :date_slash, default: nil),
+                                   data: {target: 'applicants.jobRrecuitment_immigratedAt',
+                                          'live-search' => true},
+                                   autocomplete: 'off',
+                                   disabled: true
+  = error_messages_of j.object, :immigrated_at if j.object.errors.key?(:immigrated_at)
